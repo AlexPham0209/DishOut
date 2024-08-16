@@ -21,3 +21,4 @@ monitorable = false
 shape = SubResource("RectangleShape2D_qq0lg")
 
 [connection signal="area_entered" from="EatArea" to="." method="_on_eat_area_area_entered"]
+[connection signal="area_exited" from="EatArea" to="." method="_on_eat_area_area_exited"]
