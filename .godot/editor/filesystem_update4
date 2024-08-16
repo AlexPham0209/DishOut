@@ -4,3 +4,8 @@ res://src/Scenes/Amoeba.tscn
 res://src/Scenes/Scenes.tscn
 res://src/Scenes/TestLevel.tscn
 res://src/Scripts/Amoeba.gd
+res://src/Scenes/Enemy/Watcher.tscn
+res://src/Scenes/Enemy/Enemy.tscn
+res://src/Scripts/Watcher.gd
+res://src/Singleton/Global.gd
+res://src/Scenes/Enemy/Cell.tscn

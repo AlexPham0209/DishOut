@@ -9,20 +9,18 @@ extends CharacterBody2D
 
 @onready var camera = $Camera2D
 var growth : float
-var total : float = 0
+var total : float = 1
+
+signal notify_cells
 
 var scale_tween : Tween
 
 func _ready() -> void:
+	Global.player = self
 	growth = growth_rate
 
 func _physics_process(delta: float) -> void:
 	self.move()
-	
-	#Test growth
-	if Input.is_action_just_pressed("Interact"):
-		grow(0.25)
-		
 	self.move_and_slide()
 
 func move():

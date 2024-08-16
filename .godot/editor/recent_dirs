@@ -1,2 +1,4 @@
-res://src/Scenes
+res://src/Singleton
 res://src/Scripts
+res://src/Scenes/Enemy
+res://src/Scenes
