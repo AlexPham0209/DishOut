@@ -1,3 +1,17 @@
-[gd_scene format=3 uid="uid://75jjw6yqo4ms"]
+[gd_scene load_steps=3 format=3 uid="uid://75jjw6yqo4ms"]
+
+[ext_resource type="PackedScene" uid="uid://c0utwiykrhy5g" path="res://src/Scenes/Amoeba.tscn" id="1_cemap"]
+[ext_resource type="Texture2D" uid="uid://c8022nv1f3loo" path="res://icon.png" id="2_hnk8x"]
 
 [node name="Scenes" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(406, 174)
+texture = ExtResource("2_hnk8x")
+
+[node name="Amoeba" parent="." instance=ExtResource("1_cemap")]
+position = Vector2(274, 176)
+speed = 300.0
+acceleration = 10.0
+friction = 10.0
+max_growth = 25

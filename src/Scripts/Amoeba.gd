@@ -1,17 +1,20 @@
 extends CharacterBody2D
 
-@export var growth_rate : float = 0.25
+@export var growth_rate : float = 0.1
 @export var speed : float = 10
 @export var acceleration : float = 0.25
+@export var friction : float = 0.25
+@export var max_growth = 100
 
 @onready var camera = $Camera2D
+var growth : float
 
 func _ready() -> void:
-	pass # Replace with function body.
+	growth = growth_rate
 
 func _physics_process(delta: float) -> void:
 	self.move()
-	self.grow()
+	self.grow(delta)
 	self.move_and_slide()
 
 func move():
@@ -23,10 +26,18 @@ func move():
 	if direction.length() != 0:
 		velocity.x = move_toward(velocity.x, direction.x * speed, acceleration)
 		velocity.y = move_toward(velocity.y, direction.y * speed, acceleration)
+		
+	else:
+		velocity.x = move_toward(velocity.x, 0, friction)
+		velocity.y = move_toward(velocity.y, 0, friction)
 	
-func grow():
-	if not Input.is_action_pressed("Interact"):
+func grow(delta):
+	if not Input.is_action_pressed("Interact") or self.scale >= Vector2(max_growth, max_growth):
 		return
+
+	self.scale += Vector2(growth, growth) * delta
+	print(self.scale)
+	growth *= 1.01
 	
-	self.scale += Vector2(growth_rate, growth_rate)
-	camera.zoom -= Vector2(growth_rate, growth_rate)
+	camera.zoom -= Vector2(growth_rate, growth_rate) * delta
+	

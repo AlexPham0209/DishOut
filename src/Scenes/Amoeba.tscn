@@ -19,6 +19,7 @@ texture = ExtResource("1_ik8pk")
 shape = SubResource("RectangleShape2D_ul07s")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(1e-05, 1e-05)
 position_smoothing_enabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
