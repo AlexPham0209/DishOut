@@ -1,4 +1,5 @@
-res://src/Scenes/Scenes.tscn
+res://src/Scenes/Enemy.tscn
+res://src/Scripts/Enemy.gd
 res://src/Scenes/Amoeba.tscn
-res://src/Scripts/Amoeba.gd
+res://src/Scenes/Scenes.tscn
 res://src/Scenes/TestLevel.tscn

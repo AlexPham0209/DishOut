@@ -1,3 +1,4 @@
+class_name Amoeba
 extends CharacterBody2D
 
 @export var growth_rate : float = 0.1
@@ -8,6 +9,7 @@ extends CharacterBody2D
 
 @onready var camera = $Camera2D
 var growth : float
+var total : float = 0
 
 func _ready() -> void:
 	growth = growth_rate
@@ -32,11 +34,15 @@ func move():
 		velocity.y = move_toward(velocity.y, 0, friction)
 	
 func grow(delta):
-	if not Input.is_action_pressed("Interact") or self.scale >= Vector2(max_growth, max_growth):
+	if total >= max_growth:
+		print("Max growth.  Continue to next level")
+		return 
+		
+	if not Input.is_action_pressed("Interact"):
 		return
-
+	
+	total += growth
 	self.scale += Vector2(growth, growth) * delta
-	print(self.scale)
 	growth *= 1.01
 	
 	camera.zoom -= Vector2(growth_rate, growth_rate) * delta
