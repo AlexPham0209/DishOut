@@ -1,0 +1,4 @@
+res://src/Scenes/Scenes.tscn
+res://src/Scenes/Amoeba.tscn
+res://src/Scripts/Amoeba.gd
+res://src/Scenes/TestLevel.tscn
