@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg573txp5myv0"]
+
+[ext_resource type="Script" path="res://src/Scripts/Sight.gd" id="1_o4tnc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mctn6"]
+radius = 123.454
+
+[node name="Sight" type="Area2D"]
+collision_layer = 2
+monitorable = false
+script = ExtResource("1_o4tnc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mctn6")

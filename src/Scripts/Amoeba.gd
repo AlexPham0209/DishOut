@@ -43,9 +43,10 @@ func grow(amount):
 	if total >= max_growth:
 		print("Max growth.  Continue to next level")
 		return 
-	
+
 	#Increment total growth
 	total += amount
+	notify_cells.emit()
 	
 	#Calculate new scale
 	var new_scale = self.scale + Vector2(amount, amount)
