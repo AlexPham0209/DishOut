@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c815m60eg7fxm"]
+
+[ext_resource type="Script" path="res://src/Scripts/Components/GrowthTimer.gd" id="1_4ciy2"]
+
+[node name="GrowthTimer" type="Timer"]
+script = ExtResource("1_4ciy2")

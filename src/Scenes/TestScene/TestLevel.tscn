@@ -1,3 +1,28 @@
-[gd_scene format=3 uid="uid://dx58eb2mbj76g"]
+[gd_scene load_steps=3 format=3 uid="uid://dx58eb2mbj76g"]
+
+[ext_resource type="PackedScene" uid="uid://c0utwiykrhy5g" path="res://src/Scenes/Amoeba.tscn" id="1_jsfed"]
+[ext_resource type="PackedScene" uid="uid://bqdpfstiq5rfb" path="res://src/Scenes/Enemy/Cell.tscn" id="2_yofl3"]
 
 [node name="TestLevel" type="Node2D"]
+
+[node name="Cell" parent="." instance=ExtResource("2_yofl3")]
+position = Vector2(294, 174)
+
+[node name="Growth" parent="Cell" index="1"]
+value = 6
+
+[node name="Hurtbox" parent="Cell" index="3"]
+monitorable = true
+
+[node name="Amoeba" parent="." instance=ExtResource("1_jsfed")]
+position = Vector2(138, 163)
+
+[node name="Growth" parent="Amoeba" index="4"]
+value = 3
+
+[node name="CollisionShape2D" parent="Amoeba/Hurtbox" index="0"]
+position = Vector2(0, 0)
+
+[editable path="Cell"]
+[editable path="Amoeba"]
+[editable path="Amoeba/Hurtbox"]

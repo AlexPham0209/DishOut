@@ -1,15 +1,14 @@
+Timer
+Node2D
 AnimationPlayer
 AnimationTree
 ColorRect
 ParallaxLayer
 ParallaxBackground
 GPUParticles2D
-Timer
 CPUParticles2D
-Node2D
 Parallax2D
 CanvasLayer
 State
 CanvasGroup
 CollisionShape2D
-Area2D

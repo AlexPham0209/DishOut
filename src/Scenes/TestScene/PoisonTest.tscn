@@ -33,3 +33,5 @@ position = Vector2(58, 43)
 position = Vector2(56, 212)
 
 [editable path="Cell"]
+[editable path="Amoeba"]
+[editable path="Amoeba/Hurtbox"]

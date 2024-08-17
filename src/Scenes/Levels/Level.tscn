@@ -57,3 +57,10 @@ color = Color(0.266575, 0.266575, 0.266575, 1)
 position = Vector2(311, 174)
 cam_growth_rate = 0.01
 scale_growth_rate = 0.15
+
+[node name="Growth" parent="Amoeba" index="4"]
+value = 1
+
+[editable path="Enemies/Splitter"]
+[editable path="Amoeba"]
+[editable path="Amoeba/Hurtbox"]

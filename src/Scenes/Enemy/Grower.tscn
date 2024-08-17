@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://svqfj24tt0ep"]
+
+[ext_resource type="PackedScene" uid="uid://bqdpfstiq5rfb" path="res://src/Scenes/Enemy/Cell.tscn" id="1_enx3a"]
+[ext_resource type="PackedScene" uid="uid://c815m60eg7fxm" path="res://src/Scenes/Components/GrowthTimer.tscn" id="2_c71ae"]
+
+[node name="Grower" instance=ExtResource("1_enx3a")]
+scale = Vector2(0.25, 0.25)
+
+[node name="GrowthTimer" parent="." index="4" instance=ExtResource("2_c71ae")]
+one_shot = true
+autostart = true
+max_growth = 5
+growth_amount = 1
+
+[connection signal="grow" from="GrowthTimer" to="." method="grow"]
+[connection signal="timeout" from="GrowthTimer" to="GrowthTimer" method="_on_timeout"]
