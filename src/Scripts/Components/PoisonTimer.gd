@@ -7,7 +7,6 @@ signal take_damage(amount)
 
 
 func _on_timeout() -> void:
-	print("Time")
 	if tick >= ticks:
 		queue_free()
 		

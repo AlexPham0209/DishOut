@@ -2,6 +2,7 @@ class_name Amoeba
 extends CharacterBody2D
 
 @onready var sprite : Sprite2D = $Sprite
+@onready var animation_player : AnimationPlayer = $AnimationPlayer
 @export var speed : float = 300
 @export var acceleration : float = 25
 @export var friction : float = 10
@@ -47,10 +48,12 @@ func move():
 	if direction.length() != 0:
 		velocity.x = move_toward(velocity.x, direction.x * speed, acceleration)
 		velocity.y = move_toward(velocity.y, direction.y * speed, acceleration)
+		animation_player.play("Walk")
 		rotate_sprite(direction.angle())
 		
 	else:
 		velocity.x = move_toward(velocity.x, 0, friction)
+		animation_player.stop()
 		velocity.y = move_toward(velocity.y, 0, friction)
 
 
@@ -64,6 +67,8 @@ func rotate_sprite(angle):
 func grow(amount):
 	#Once reached max growth, then go to the next level
 	growth += amount
+	camera.screen_shake()
+	
 	if growth >= max_growth:
 		print("Max growth.  Continue to next level")
 		return 

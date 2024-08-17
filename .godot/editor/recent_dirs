@@ -1,5 +1,6 @@
-res://src/Scenes
+res://src/Shaders
 res://src/Scripts
+res://src/Scenes
 res://src/Scenes/Enemy
 res://src/Scripts/States
 res://src/Scripts/Effects

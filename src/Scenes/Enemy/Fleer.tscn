@@ -6,15 +6,22 @@
 [ext_resource type="Script" path="res://src/Scripts/States/FleeingState.gd" id="2_wbhrk"]
 
 [node name="Fleer" instance=ExtResource("1_8fvpo")]
+scale = Vector2(0.25, 0.25)
 
 [node name="Icon" parent="." index="0"]
-scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_8dbb2")
 
 [node name="Sight" parent="." index="2" node_paths=PackedStringArray("entity", "state_machine") instance=ExtResource("2_36aop")]
+scale = Vector2(4, 4)
 entity = NodePath("..")
 state_machine = NodePath("../States")
 reaction_state = "Fleeing"
+
+[node name="Enter" parent="Sight" index="0"]
+visible = true
+
+[node name="Exit" parent="Sight" index="1"]
+visible = true
 
 [node name="Fleeing" type="Node2D" parent="States" index="2" node_paths=PackedStringArray("sprite")]
 script = ExtResource("2_wbhrk")

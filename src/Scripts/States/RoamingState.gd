@@ -8,6 +8,9 @@ var target_position : Vector2
 @export var tolerance : float = 0.5
 @export var speed : float = 50
 
+func enter(param : Dictionary = {}):
+	change_target_position()
+
 func physics_update(delta):
 	var e = entity as Cell
 	var direction : Vector2 = (target_position - e.global_position).normalized()

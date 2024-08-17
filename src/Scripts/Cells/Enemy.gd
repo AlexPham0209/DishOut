@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var margin : Vector2 = Vector2(0.25, 0.25)
 @onready var state_machine : StateMachine = $States
 @onready var death_state : State = $States/Death
+@onready var animation_player : AnimationPlayer = $AnimationPlayer
 
 @export var growth_rate : float = 0.5
 @export var growth : int
@@ -24,6 +25,11 @@ func _process(delta: float) -> void:
 	if player != null and player.growth >= self.growth and not is_invincible:
 		eaten.emit()
 		state_machine.transition_to("Death", {})
+		
+	if velocity != Vector2.ZERO:
+		animation_player.play("Walk")
+	else:
+		animation_player.stop()
 		
 	move_and_slide()
 

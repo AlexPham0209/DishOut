@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dcwe2fhdssqod" path="res://src/Scenes/Enemy/Fleer.tscn" id="4_ermjx"]
 
 [node name="Splitter" instance=ExtResource("1_wdi83")]
+scale = Vector2(0.5, 0.5)
 
 [node name="Sight" parent="." index="2" node_paths=PackedStringArray("entity", "state_machine") instance=ExtResource("2_0njqb")]
 entity = NodePath("..")

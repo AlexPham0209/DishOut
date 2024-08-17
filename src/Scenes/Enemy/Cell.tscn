@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bqdpfstiq5rfb"]
+[gd_scene load_steps=15 format=3 uid="uid://bqdpfstiq5rfb"]
 
 [ext_resource type="Script" path="res://src/Scripts/Cells/Enemy.gd" id="1_rcpp6"]
 [ext_resource type="Texture2D" uid="uid://c8022nv1f3loo" path="res://icon.png" id="2_qj6me"]
@@ -9,9 +9,47 @@
 [ext_resource type="Script" path="res://src/Scripts/States/DeathState.gd" id="7_25yi1"]
 [ext_resource type="Script" path="res://src/Scripts/Effects/Effect.gd" id="8_phfqo"]
 [ext_resource type="Resource" uid="uid://b52ef2wvfkw46" path="res://src/Resources/Effects/GrowEffect.tres" id="9_1jlkj"]
+[ext_resource type="PackedScene" uid="uid://b8yujopof8a6l" path="res://src/Scenes/Blood.tscn" id="10_vp6py"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qq0lg"]
-size = Vector2(12, 12)
+size = Vector2(33, 32)
+
+[sub_resource type="Animation" id="Animation_wouwy"]
+resource_name = "Walk"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5),
+"transitions": PackedFloat32Array(1, 2.92817, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 0.95), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_10ycn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u65de"]
+_data = {
+"RESET": SubResource("Animation_10ycn"),
+"Walk": SubResource("Animation_wouwy")
+}
 
 [node name="Cell" type="CharacterBody2D"]
 script = ExtResource("1_rcpp6")
@@ -42,6 +80,12 @@ speed = 50.0
 [node name="Death" parent="States" instance=ExtResource("5_ft01m")]
 script = ExtResource("7_25yi1")
 effects = Array[ExtResource("8_phfqo")]([ExtResource("9_1jlkj")])
+blood = ExtResource("10_vp6py")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_u65de")
+}
 
 [connection signal="area_entered" from="Overlap" to="." method="player_enter"]
 [connection signal="area_exited" from="Overlap" to="." method="player_exit"]
