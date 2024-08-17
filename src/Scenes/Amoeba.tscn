@@ -1,21 +1,19 @@
 [gd_scene load_steps=5 format=3 uid="uid://c0utwiykrhy5g"]
 
 [ext_resource type="Script" path="res://src/Scripts/Amoeba.gd" id="1_3xfsd"]
-[ext_resource type="Texture2D" uid="uid://c8022nv1f3loo" path="res://icon.png" id="1_ik8pk"]
+[ext_resource type="Texture2D" uid="uid://cn6w2amcfartv" path="res://src/Assets/Art/Petra/Pro_1.png" id="2_j3dh1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ul07s"]
-size = Vector2(32, 32)
+size = Vector2(32, 38)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5d8oh"]
 
 [node name="Amoeba" type="CharacterBody2D"]
 script = ExtResource("1_3xfsd")
 
-[node name="Stages" type="Node2D" parent="."]
-
-[node name="Stage1" type="Sprite2D" parent="Stages"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_ik8pk")
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_j3dh1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ul07s")

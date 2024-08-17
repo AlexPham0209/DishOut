@@ -25,6 +25,5 @@ func exit_sight(area: Area2D) -> void:
 
 
 func initiate_chase():
-	print("Start Chase")
 	state_machine.transition_to(reaction_state, {})
 	

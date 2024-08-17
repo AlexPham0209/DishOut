@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b2ks2vr8d0vqd" path="res://src/Scenes/State.tscn" id="3_tb2ki"]
 [ext_resource type="Script" path="res://src/Scripts/States/AttackingState.gd" id="4_mjn46"]
 
-[node name="Watcher" instance=ExtResource("1_fb81a")]
+[node name="Chaser" instance=ExtResource("1_fb81a")]
 script = ExtResource("2_xkoax")
 
 [node name="Sight" parent="." index="2" node_paths=PackedStringArray("entity", "state_machine") instance=ExtResource("3_6v82l")]
@@ -14,6 +14,7 @@ entity = NodePath("..")
 state_machine = NodePath("../States")
 reaction_state = "Attacking"
 
-[node name="Attacking" parent="States" index="2" instance=ExtResource("3_tb2ki")]
+[node name="Attacking" parent="States" index="2" node_paths=PackedStringArray("sprite") instance=ExtResource("3_tb2ki")]
 script = ExtResource("4_mjn46")
-chase_speed = 250.0
+chase_speed = 125.0
+sprite = NodePath("../../Icon")

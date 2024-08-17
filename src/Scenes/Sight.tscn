@@ -12,6 +12,7 @@ radius = 371.345
 script = ExtResource("1_o4tnc")
 
 [node name="Enter" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 monitorable = false
 
@@ -19,6 +20,7 @@ monitorable = false
 shape = SubResource("CircleShape2D_mctn6")
 
 [node name="Exit" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 monitorable = false
 

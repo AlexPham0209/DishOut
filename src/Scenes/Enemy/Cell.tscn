@@ -30,8 +30,9 @@ script = ExtResource("4_io8qd")
 initial_state = "Roaming"
 entity = NodePath("..")
 
-[node name="Roaming" parent="States" instance=ExtResource("5_ft01m")]
+[node name="Roaming" parent="States" node_paths=PackedStringArray("sprite") instance=ExtResource("5_ft01m")]
 script = ExtResource("6_knp05")
+sprite = NodePath("../../Icon")
 distance = 64
 tolerance = 0.5
 speed = 50.0
