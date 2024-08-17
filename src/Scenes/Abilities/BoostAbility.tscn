@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://swkgx2pi0q3d"]
+
+[ext_resource type="PackedScene" uid="uid://i5s2yf56455d" path="res://src/Scenes/Abilities/Ability.tscn" id="1_gpvem"]
+[ext_resource type="Script" path="res://src/Scripts/Abilities/BoostAbility.gd" id="2_6rvj7"]
+
+[node name="BoostAbility" instance=ExtResource("1_gpvem")]
+script = ExtResource("2_6rvj7")
+boost_speed = 50.0
+
+[node name="Timer" type="Timer" parent="." index="0"]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

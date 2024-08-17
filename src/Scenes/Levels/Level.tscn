@@ -1,11 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvt6tmyt3u46e"]
+[gd_scene load_steps=11 format=3 uid="uid://dvt6tmyt3u46e"]
 
 [ext_resource type="Shader" path="res://src/Shaders/Vignette.gdshader" id="1_pwt6p"]
 [ext_resource type="PackedScene" uid="uid://c0utwiykrhy5g" path="res://src/Scenes/Amoeba.tscn" id="2_7tf01"]
 [ext_resource type="PackedScene" uid="uid://dni3h0123ehkk" path="res://src/Scenes/Enemy/Spawner.tscn" id="2_e6vjr"]
 [ext_resource type="Shader" path="res://src/Shaders/ChromaticAberration.gdshader" id="2_xsx4r"]
 [ext_resource type="PackedScene" uid="uid://uv30qc2qalff" path="res://src/Scenes/Enemy/Splitter.tscn" id="3_q2wcw"]
+[ext_resource type="Shader" path="res://src/Shaders/Dash.gdshader" id="5_j72a0"]
 [ext_resource type="PackedScene" uid="uid://svqfj24tt0ep" path="res://src/Scenes/Enemy/Grower.tscn" id="5_y1d1x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gbqte"]
+shader = ExtResource("5_j72a0")
+shader_parameter/opacity = null
+shader_parameter/r = 2.88
+shader_parameter/g = 2.0
+shader_parameter/b = 2.0
+shader_parameter/mix_color = 0.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lhn4t"]
 shader = ExtResource("1_pwt6p")
@@ -27,12 +36,25 @@ shader_parameter/b_displacement = Vector2(-1.25, 0)
 
 [node name="Splitter" parent="Enemies" instance=ExtResource("3_q2wcw")]
 position = Vector2(422, 58)
+growth_rate = 0.15
 
 [node name="Spawner" parent="Enemies" instance=ExtResource("2_e6vjr")]
 position = Vector2(185, 228)
+growth_rate = 0.15
 
 [node name="Grower" parent="Enemies" instance=ExtResource("5_y1d1x")]
 position = Vector2(456, 198)
+growth_rate = 0.15
+
+[node name="Amoeba" parent="." instance=ExtResource("2_7tf01")]
+material = SubResource("ShaderMaterial_gbqte")
+position = Vector2(311, 174)
+friction = 15.0
+cam_growth_rate = 0.01
+scale_growth_rate = 0.15
+
+[node name="Growth" parent="Amoeba" index="4"]
+value = 1
 
 [node name="Effects" type="CanvasLayer" parent="."]
 
@@ -57,14 +79,23 @@ offset_right = 640.0
 offset_bottom = 360.0
 color = Color(0.266575, 0.266575, 0.266575, 1)
 
-[node name="Amoeba" parent="." instance=ExtResource("2_7tf01")]
-position = Vector2(311, 174)
-cam_growth_rate = 0.01
-scale_growth_rate = 0.15
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Growth" parent="Amoeba" index="4"]
-value = 1
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/Control"]
+layout_mode = 0
+offset_right = 153.0
+offset_bottom = 40.0
+
+[connection signal="area_entered" from="Enemies/Splitter/Hurtbox" to="Enemies/Splitter" method="player_enter"]
+[connection signal="area_exited" from="Enemies/Splitter/Hurtbox" to="Enemies/Splitter" method="player_exit"]
 
 [editable path="Enemies/Splitter"]
 [editable path="Amoeba"]
 [editable path="Amoeba/Hurtbox"]
+[editable path="Amoeba/Abilities/BoostAbility"]

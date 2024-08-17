@@ -98,6 +98,4 @@ libraries = {
 "": SubResource("AnimationLibrary_u65de")
 }
 
-[connection signal="area_entered" from="Hurtbox" to="." method="player_enter"]
-[connection signal="area_exited" from="Hurtbox" to="." method="player_exit"]
 [connection signal="take_damage" from="Hurtbox" to="." method="damage"]

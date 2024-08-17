@@ -1,6 +1,9 @@
+res://src/Scripts/Trail
+res://src/Shaders
+res://src/Scenes/Abilities
+res://src/Scripts/Abilities
 res://src/Scenes/Components
 res://src/Scripts/Components
-res://src/Shaders
 res://src/Scripts
 res://src/Scenes
 res://src/Scenes/Enemy

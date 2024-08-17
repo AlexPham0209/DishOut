@@ -17,7 +17,3 @@ func _process(delta: float) -> void:
 	
 	take_damage.emit()
 	invincibility.start_invincibility()
-
-
-func _on_area_entered(area: Area2D) -> void:
-	print("ENTER PLEASE")

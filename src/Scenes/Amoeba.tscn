@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c0utwiykrhy5g"]
+[gd_scene load_steps=12 format=3 uid="uid://c0utwiykrhy5g"]
 
 [ext_resource type="Script" path="res://src/Scripts/Cells/Amoeba.gd" id="1_3xfsd"]
 [ext_resource type="Texture2D" uid="uid://cn6w2amcfartv" path="res://src/Assets/Art/Petra/Pro_1.png" id="2_j3dh1"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://brjdw3n71x6ib" path="res://src/Scenes/Components/Growth.tscn" id="4_5ivvt"]
 [ext_resource type="PackedScene" uid="uid://tv55ugnq6ijl" path="res://src/Scenes/Components/Invincibility.tscn" id="5_q4afd"]
 [ext_resource type="PackedScene" uid="uid://dsua2mr50l6wm" path="res://src/Scenes/Components/Hurtbox.tscn" id="5_rt8d0"]
+[ext_resource type="PackedScene" uid="uid://swkgx2pi0q3d" path="res://src/Scenes/Abilities/BoostAbility.tscn" id="7_ydkoi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ul07s"]
 size = Vector2(32, 38)
@@ -48,10 +49,11 @@ _data = {
 "Walk": SubResource("Animation_hxeeq")
 }
 
-[node name="Amoeba" type="CharacterBody2D"]
+[node name="Amoeba" type="CharacterBody2D" node_paths=PackedStringArray("ability")]
 script = ExtResource("1_3xfsd")
 cam_growth_rate = 0.005
 scale_growth_rate = 0.075
+ability = NodePath("Abilities/BoostAbility")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
@@ -88,6 +90,13 @@ invincibility = NodePath("../Invincibility")
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2(0, -1)
 
+[node name="Abilities" type="Node2D" parent="."]
+
+[node name="BoostAbility" parent="Abilities" instance=ExtResource("7_ydkoi")]
+scale = Vector2(1, 0.971408)
+boost_speed = 700.0
+
 [connection signal="take_damage" from="Hurtbox" to="." method="damage"]
 
 [editable path="Hurtbox"]
+[editable path="Abilities/BoostAbility"]

@@ -6,6 +6,8 @@ extends CharacterBody2D
 @onready var growth : Growth = $Growth
 @onready var camera = $Camera2D
 
+var start_speed : float
+var direction : Vector2
 @export var speed : float = 300
 @export var acceleration : float = 25
 @export var friction : float = 10
@@ -14,10 +16,11 @@ extends CharacterBody2D
 @export var cam_growth_rate : float = 0.5
 @export var scale_growth_rate : float = 1
 @export var min : float
-
+@export var ability : Ability
 
 var start_scale : Vector2
 var start_zoom : Vector2
+var dashing : bool = false
 
 signal notify_cells
 
@@ -25,22 +28,30 @@ var scale_tween : Tween
 var rotate_tween : Tween
 
 func _ready() -> void:
+	start_speed = speed 
 	start_scale = scale
 	start_zoom = camera.zoom
 	scale = start_scale + (growth.get_vector() * scale_growth_rate)
 	camera.zoom = (start_zoom - (growth.get_vector() * cam_growth_rate)).clamp(Vector2(min, min), Vector2.ONE)
 	Global.player = self
+	ability.entity = self
 
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("Interact"):
+		ability.execute()
+		
 	self.move()
 	self.move_and_slide()
 
 func move():
+	if dashing:
+		return
+		
 	var x = Input.get_axis("Left", "Right")
 	var y = Input.get_axis("Up", "Down")
 	
-	var direction = Vector2(x, y)
+	direction = Vector2(x, y)
 	
 	#Add friction and acceleration
 	if direction.length() != 0:
