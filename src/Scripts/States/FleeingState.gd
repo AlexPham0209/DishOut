@@ -1,3 +1,4 @@
+class_name FleeingState
 extends State
 @export var sprite : Sprite2D
 @export var chase_speed : float

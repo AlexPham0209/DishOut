@@ -48,8 +48,8 @@ growth = 1
 [node name="Amoeba" parent="." instance=ExtResource("1_mvl6u")]
 position = Vector2(132, 140)
 max_growth = 50
-cam_growth_rate = 0.05
-scale_growth_rate = 0.75
+cam_growth_rate = 0.005
+scale_growth_rate = 0.075
 min = 0.2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

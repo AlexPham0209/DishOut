@@ -25,7 +25,7 @@ func _ready() -> void:
 	start_scale = scale
 	start_zoom = camera.zoom
 	scale = start_scale + (Vector2(growth, growth) * scale_growth_rate)
-	camera.zoom = start_zoom - (Vector2(growth, growth) * cam_growth_rate)
+	camera.zoom = (start_zoom - (Vector2(growth, growth) * cam_growth_rate)).clamp(Vector2(min, min), Vector2.ONE)
 	Global.player = self
 
 
@@ -63,17 +63,19 @@ func rotate_sprite(angle):
 	
 func grow(amount):
 	#Once reached max growth, then go to the next level
+	growth += amount
 	if growth >= max_growth:
 		print("Max growth.  Continue to next level")
 		return 
 	
-	#Increment total growth
-	growth += amount
+	if growth < 0:
+		queue_free()
+	 
 	notify_cells.emit()
 	
 	#Calculate new scale
 	var new_scale = start_scale + (Vector2(growth, growth) * scale_growth_rate)
-	var new_zoom = (start_zoom - (Vector2(growth, growth) * 0.05)).clamp(Vector2(min, min), Vector2.ONE)
+	var new_zoom = (start_zoom - (Vector2(growth, growth) * cam_growth_rate)).clamp(Vector2(min, min), Vector2.ONE)
 
 	#Procedurally animate the scale of the player and the zoom of the camera to new sizes
 	scale_tween = create_tween()

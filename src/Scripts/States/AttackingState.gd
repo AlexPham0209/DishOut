@@ -1,3 +1,4 @@
+class_name AttackingState
 extends State
 @export var chase_speed : float
 @export var sprite : Sprite2D

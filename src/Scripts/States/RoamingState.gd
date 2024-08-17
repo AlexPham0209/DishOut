@@ -1,3 +1,4 @@
+class_name RoamingState
 extends State
 
 var target_position : Vector2

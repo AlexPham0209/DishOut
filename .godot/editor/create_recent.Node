@@ -1,9 +1,9 @@
 Timer
+State
 Node2D
 ColorRect
 CanvasLayer
 CanvasGroup
-State
 CollisionShape2D
 Area2D
 CharacterBody2D

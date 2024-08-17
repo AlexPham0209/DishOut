@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://df2vjeh54kjpx"]
+[gd_scene load_steps=8 format=3 uid="uid://df2vjeh54kjpx"]
 
 [ext_resource type="PackedScene" uid="uid://bqdpfstiq5rfb" path="res://src/Scenes/Enemy/Cell.tscn" id="1_3vtr1"]
 [ext_resource type="Script" path="res://src/Scripts/Effects/Effect.gd" id="2_650wc"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://dsc67v6ykr7oo" path="res://src/Scripts/Effects/PoisonEffect.tres" id="4_sasut"]
 [ext_resource type="PackedScene" uid="uid://c0utwiykrhy5g" path="res://src/Scenes/Amoeba.tscn" id="5_oan0j"]
 [ext_resource type="Texture2D" uid="uid://c8022nv1f3loo" path="res://icon.png" id="6_g5vbd"]
+[ext_resource type="PackedScene" uid="uid://uv30qc2qalff" path="res://src/Scenes/Enemy/Splitter.tscn" id="7_bied1"]
 
 [node name="PoisonTest" type="Node2D"]
 
@@ -17,12 +18,17 @@ effects = Array[ExtResource("2_650wc")]([ExtResource("3_w60cc"), ExtResource("4_
 
 [node name="Amoeba" parent="." instance=ExtResource("5_oan0j")]
 position = Vector2(192, 148)
-cam_growth_rate = 0.05
-scale_growth_rate = 0.75
-growth = 10
+max_growth = 100
+cam_growth_rate = 0.005
+scale_growth_rate = 0.075
+growth = 0
+min = 0.15
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(317, 199)
 texture = ExtResource("6_g5vbd")
+
+[node name="Splitter" parent="." instance=ExtResource("7_bied1")]
+position = Vector2(58, 43)
 
 [editable path="Cell"]

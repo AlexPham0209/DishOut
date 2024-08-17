@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://uv30qc2qalff"]
+
+[ext_resource type="PackedScene" uid="uid://bqdpfstiq5rfb" path="res://src/Scenes/Enemy/Cell.tscn" id="1_wdi83"]
+[ext_resource type="PackedScene" uid="uid://bg573txp5myv0" path="res://src/Scenes/Sight.tscn" id="2_0njqb"]
+[ext_resource type="Script" path="res://src/Scripts/States/SplitState.gd" id="3_1lm38"]
+[ext_resource type="PackedScene" uid="uid://dcwe2fhdssqod" path="res://src/Scenes/Enemy/Fleer.tscn" id="4_ermjx"]
+
+[node name="Splitter" instance=ExtResource("1_wdi83")]
+
+[node name="Sight" parent="." index="2" node_paths=PackedStringArray("entity", "state_machine") instance=ExtResource("2_0njqb")]
+entity = NodePath("..")
+state_machine = NodePath("../States")
+reaction_state = "Split"
+
+[node name="Split" type="Node2D" parent="States" index="2"]
+script = ExtResource("3_1lm38")
+amount = 10
+enemy = ExtResource("4_ermjx")
+distance = 32
