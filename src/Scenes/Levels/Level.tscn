@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvt6tmyt3u46e"]
+[gd_scene load_steps=9 format=3 uid="uid://dvt6tmyt3u46e"]
 
 [ext_resource type="Shader" path="res://src/Shaders/Vignette.gdshader" id="1_pwt6p"]
 [ext_resource type="PackedScene" uid="uid://c0utwiykrhy5g" path="res://src/Scenes/Amoeba.tscn" id="2_7tf01"]
 [ext_resource type="PackedScene" uid="uid://dni3h0123ehkk" path="res://src/Scenes/Enemy/Spawner.tscn" id="2_e6vjr"]
 [ext_resource type="Shader" path="res://src/Shaders/ChromaticAberration.gdshader" id="2_xsx4r"]
 [ext_resource type="PackedScene" uid="uid://uv30qc2qalff" path="res://src/Scenes/Enemy/Splitter.tscn" id="3_q2wcw"]
+[ext_resource type="PackedScene" uid="uid://svqfj24tt0ep" path="res://src/Scenes/Enemy/Grower.tscn" id="5_y1d1x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lhn4t"]
 shader = ExtResource("1_pwt6p")
@@ -16,9 +17,9 @@ shader_parameter/vignette_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2dgtv"]
 shader = ExtResource("2_xsx4r")
-shader_parameter/r_displacement = Vector2(1, 0)
+shader_parameter/r_displacement = Vector2(1.25, 0)
 shader_parameter/g_displacement = Vector2(0, 0)
-shader_parameter/b_displacement = Vector2(-1, 0)
+shader_parameter/b_displacement = Vector2(-1.25, 0)
 
 [node name="Level" type="Node2D"]
 
@@ -29,6 +30,9 @@ position = Vector2(422, 58)
 
 [node name="Spawner" parent="Enemies" instance=ExtResource("2_e6vjr")]
 position = Vector2(185, 228)
+
+[node name="Grower" parent="Enemies" instance=ExtResource("5_y1d1x")]
+position = Vector2(456, 198)
 
 [node name="Effects" type="CanvasLayer" parent="."]
 

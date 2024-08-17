@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var invincibility : Invincibility = $Invincibility
 
 @export var growth_rate : float = 0.5
+var scale_tween : Tween
 var start_scale : Vector2
 
 signal eaten
@@ -29,3 +30,15 @@ func damage():
 	eaten.emit()
 	state_machine.transition_to("Death", {})
 		
+func grow(amount):
+	#Once reached max growth, then go to the next level
+	growth.value += amount
+
+	#Calculate new scale
+	var new_scale = start_scale + (growth.get_vector() * growth_rate)
+	#Procedurally animate the scale of the player and the zoom of the camera to new sizes
+	scale_tween = create_tween()
+	scale_tween.tween_property(self, "scale", new_scale, 1.0). \
+		set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	scale_tween.play()
+	

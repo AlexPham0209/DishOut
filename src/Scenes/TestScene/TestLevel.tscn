@@ -8,9 +8,6 @@
 [node name="Cell" parent="." instance=ExtResource("2_yofl3")]
 position = Vector2(294, 174)
 
-[node name="Growth" parent="Cell" index="1"]
-value = 6
-
 [node name="Hurtbox" parent="Cell" index="3"]
 monitorable = true
 
@@ -18,7 +15,7 @@ monitorable = true
 position = Vector2(138, 163)
 
 [node name="Growth" parent="Amoeba" index="4"]
-value = 3
+value = 1
 
 [node name="CollisionShape2D" parent="Amoeba/Hurtbox" index="0"]
 position = Vector2(0, 0)

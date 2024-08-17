@@ -11,3 +11,6 @@ modulate = Color(0.288518, 0.288518, 0.288518, 1)
 
 [node name="SpawnTimer" parent="." index="3" instance=ExtResource("2_sfx1n")]
 wait_time = 2.0
+
+[node name="Hurtbox" parent="." index="4"]
+monitorable = true

@@ -24,3 +24,4 @@ res://src/Scenes/Components/Hurtbox.tscn
 res://src/Scenes/TestScene/TestLevel.tscn
 res://src/Scenes/Components/Invincibility.tscn
 res://src/Scripts/States/SplitState.gd
+res://src/Scenes/Enemy/Grower.tscn

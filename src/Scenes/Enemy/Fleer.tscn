@@ -23,6 +23,9 @@ visible = true
 [node name="Exit" parent="Sight" index="1"]
 visible = true
 
+[node name="Hurtbox" parent="." index="4"]
+monitorable = true
+
 [node name="Fleeing" type="Node2D" parent="States" index="2" node_paths=PackedStringArray("sprite")]
 script = ExtResource("2_wbhrk")
 sprite = NodePath("../../Icon")
