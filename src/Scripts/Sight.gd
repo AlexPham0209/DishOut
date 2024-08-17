@@ -1,14 +1,17 @@
-extends Area2D
+extends Node2D
 
 @export var entity : Node2D
 @export var state_machine : StateMachine
+@export var reaction_state : String
 
 func enter_sight(area: Area2D) -> void:
 	if area.get_parent() is not Amoeba:
 		return
 		
-	var player : Amoeba = area.get_parent() 
-	player.notify_cells.connect(initiate_chase)
+	var player : Amoeba = area.get_parent()
+	
+	if not player.notify_cells.is_connected(initiate_chase):
+		player.notify_cells.connect(initiate_chase)
 
 
 #If it is outside of area, leave it out of callable
@@ -23,5 +26,5 @@ func exit_sight(area: Area2D) -> void:
 
 func initiate_chase():
 	print("Start Chase")
-	state_machine.transition_to("Attacking", {})
+	state_machine.transition_to(reaction_state, {})
 	

@@ -9,3 +9,10 @@ res://src/Scripts/Watcher.gd
 res://src/Scripts/Enemy.gd
 res://src/Scenes/Enemy/Sight.gd
 res://src/Scripts/Sight.gd
+res://src/Scripts/States/FleeingState.gd
+res://src/Scripts/States/State.gd
+res://src/Scenes/Enemy/Fleer.tscn
+res://src/Scenes/Sight.tscn
+res://src/Scenes/Enemy/Chaser.tscn
+res://src/Scenes/TestScene/FleerTest.tscn
+res://src/Scripts/Amoeba.gd

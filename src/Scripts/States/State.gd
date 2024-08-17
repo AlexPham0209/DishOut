@@ -1,5 +1,5 @@
 class_name State
-extends Node
+extends Node2D
 
 var entity : Node2D
 signal transition_to(state_name : String, param : Dictionary)

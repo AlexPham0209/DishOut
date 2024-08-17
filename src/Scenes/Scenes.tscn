@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c0utwiykrhy5g" path="res://src/Scenes/Amoeba.tscn" id="1_cemap"]
 [ext_resource type="Texture2D" uid="uid://c8022nv1f3loo" path="res://icon.png" id="2_hnk8x"]
 [ext_resource type="PackedScene" uid="uid://bqdpfstiq5rfb" path="res://src/Scenes/Enemy/Cell.tscn" id="3_xladl"]
-[ext_resource type="PackedScene" uid="uid://5iaqrrp5m1ar" path="res://src/Scenes/Enemy/Watcher.tscn" id="4_c85ah"]
+[ext_resource type="PackedScene" uid="uid://5iaqrrp5m1ar" path="res://src/Scenes/Enemy/Chaser.tscn" id="4_c85ah"]
 
 [node name="TestScene" type="Node2D"]
 
@@ -24,10 +24,6 @@ position = Vector2(185, 45)
 
 [node name="Amoeba" parent="." instance=ExtResource("1_cemap")]
 position = Vector2(274, 176)
-speed = 300.0
-acceleration = 25.0
-friction = 10.0
-max_growth = 1000
 
 [node name="Watcher2" parent="." instance=ExtResource("4_c85ah")]
 position = Vector2(358, 260)

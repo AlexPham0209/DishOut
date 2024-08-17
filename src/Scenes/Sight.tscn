@@ -1,14 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://bg573txp5myv0"]
+[gd_scene load_steps=4 format=3 uid="uid://bg573txp5myv0"]
 
 [ext_resource type="Script" path="res://src/Scripts/Sight.gd" id="1_o4tnc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mctn6"]
-radius = 123.454
+radius = 191.846
 
-[node name="Sight" type="Area2D"]
-collision_layer = 2
-monitorable = false
+[sub_resource type="CircleShape2D" id="CircleShape2D_v48my"]
+radius = 371.345
+
+[node name="Sight" type="Node2D"]
 script = ExtResource("1_o4tnc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Enter" type="Area2D" parent="."]
+collision_layer = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enter"]
 shape = SubResource("CircleShape2D_mctn6")
+
+[node name="Exit" type="Area2D" parent="."]
+collision_layer = 2
+monitorable = false
+
+[node name="Area2D" type="CollisionShape2D" parent="Exit"]
+shape = SubResource("CircleShape2D_v48my")
+
+[connection signal="area_entered" from="Enter" to="." method="enter_sight"]
+[connection signal="area_exited" from="Exit" to="." method="exit_sight"]

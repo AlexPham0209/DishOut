@@ -2,10 +2,10 @@ class_name Amoeba
 extends CharacterBody2D
 
 @export var growth_rate : float = 0.1
-@export var speed : float = 10
-@export var acceleration : float = 0.25
-@export var friction : float = 0.25
-@export var max_growth = 100
+@export var speed : float = 300
+@export var acceleration : float = 25
+@export var friction : float = 10
+@export var max_growth = 1000
 
 @onready var camera = $Camera2D
 var growth : float
