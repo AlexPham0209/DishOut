@@ -17,3 +17,8 @@ res://src/Scripts/States/FleeingState.gd
 res://src/Scripts/States/RoamingState.gd
 res://src/Scripts/States/SplitState.gd
 res://src/Scenes/Enemy/Splitter.tscn
+res://src/Scripts/Sight.gd
+res://src/Scenes/SpawnerTimer.tscn
+res://src/Scripts/SpawnTimer.gd
+res://src/Scenes/Spawner.tscn
+res://src/Scenes/Enemy/Spawner.tscn

@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://rdbuxekfhsk1"]
+
+[ext_resource type="Script" path="res://src/Scripts/SpawnTimer.gd" id="1_at817"]
+[ext_resource type="PackedScene" uid="uid://5iaqrrp5m1ar" path="res://src/Scenes/Enemy/Chaser.tscn" id="2_5p66c"]
+[ext_resource type="PackedScene" uid="uid://cho6hfuheh6n0" path="res://src/Scenes/Enemy/Poisoner.tscn" id="3_ks8fj"]
+[ext_resource type="PackedScene" uid="uid://dcwe2fhdssqod" path="res://src/Scenes/Enemy/Fleer.tscn" id="4_u70u8"]
+
+[node name="SpawnTimer" type="Timer"]
+wait_time = 5.0
+autostart = true
+script = ExtResource("1_at817")
+enemies = Array[PackedScene]([ExtResource("2_5p66c"), ExtResource("3_ks8fj"), ExtResource("4_u70u8")])
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

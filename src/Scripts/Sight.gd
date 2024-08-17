@@ -20,7 +20,9 @@ func exit_sight(area: Area2D) -> void:
 		return
 		
 	var player : Amoeba = area.get_parent() 
-	player.notify_cells.disconnect(initiate_chase)
+	
+	if player.notify_cells.is_connected(initiate_chase):
+		player.notify_cells.disconnect(initiate_chase)
 	state_machine.transition_to("Roaming", {})
 
 

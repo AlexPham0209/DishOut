@@ -21,7 +21,7 @@ func _ready() -> void:
 	self.scale = start_scale + (Vector2(growth, growth) * growth_rate)
 
 func _process(delta: float) -> void:
-	if player != null and player.growth >= self.growth:
+	if player != null and player.growth >= self.growth and not is_invincible:
 		eaten.emit()
 		state_machine.transition_to("Death", {})
 		
@@ -38,9 +38,7 @@ func player_exit(area: Area2D) -> void:
 
 func start_invinciblity(time : float):
 	is_invincible = true
-	print("invincible")
 	invincibility_tween = create_tween()
 	invincibility_tween.tween_property(self, "is_invincible", false, time)
 	invincibility_tween.play()
 	await invincibility_tween.finished
-	print("normal :(")
