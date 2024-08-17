@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c0utwiykrhy5g"]
 
-[ext_resource type="Script" path="res://src/Scripts/Amoeba.gd" id="1_3xfsd"]
+[ext_resource type="Script" path="res://src/Scripts/Cells/Amoeba.gd" id="1_3xfsd"]
 [ext_resource type="Texture2D" uid="uid://cn6w2amcfartv" path="res://src/Assets/Art/Petra/Pro_1.png" id="2_j3dh1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ul07s"]

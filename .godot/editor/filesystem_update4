@@ -22,3 +22,6 @@ res://src/Scenes/SpawnerTimer.tscn
 res://src/Scripts/SpawnTimer.gd
 res://src/Scenes/Spawner.tscn
 res://src/Scenes/Enemy/Spawner.tscn
+res://src/Scenes/TestScene/TestLevel.tscn
+res://src/Scenes/Components/PoisonTimer.tscn
+res://src/Scenes/Components/Sight.tscn

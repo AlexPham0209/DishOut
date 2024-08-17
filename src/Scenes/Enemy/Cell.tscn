@@ -1,14 +1,14 @@
 [gd_scene load_steps=11 format=3 uid="uid://bqdpfstiq5rfb"]
 
-[ext_resource type="Script" path="res://src/Scripts/Enemy.gd" id="1_rcpp6"]
+[ext_resource type="Script" path="res://src/Scripts/Cells/Enemy.gd" id="1_rcpp6"]
 [ext_resource type="Texture2D" uid="uid://c8022nv1f3loo" path="res://icon.png" id="2_qj6me"]
-[ext_resource type="PackedScene" uid="uid://cd1ne1rmx77gt" path="res://src/Scenes/StateMachine.tscn" id="3_whqsm"]
+[ext_resource type="PackedScene" uid="uid://cd1ne1rmx77gt" path="res://src/Scenes/States/StateMachine.tscn" id="3_whqsm"]
 [ext_resource type="Script" path="res://src/Scripts/States/StateMachine.gd" id="4_io8qd"]
-[ext_resource type="PackedScene" uid="uid://b2ks2vr8d0vqd" path="res://src/Scenes/State.tscn" id="5_ft01m"]
+[ext_resource type="PackedScene" uid="uid://b2ks2vr8d0vqd" path="res://src/Scenes/States/State.tscn" id="5_ft01m"]
 [ext_resource type="Script" path="res://src/Scripts/States/RoamingState.gd" id="6_knp05"]
 [ext_resource type="Script" path="res://src/Scripts/States/DeathState.gd" id="7_25yi1"]
 [ext_resource type="Script" path="res://src/Scripts/Effects/Effect.gd" id="8_phfqo"]
-[ext_resource type="Resource" uid="uid://b52ef2wvfkw46" path="res://src/Scripts/Effects/GrowEffect.tres" id="9_1jlkj"]
+[ext_resource type="Resource" uid="uid://b52ef2wvfkw46" path="res://src/Resources/Effects/GrowEffect.tres" id="9_1jlkj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qq0lg"]
 size = Vector2(12, 12)

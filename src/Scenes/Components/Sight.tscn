@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bg573txp5myv0"]
 
-[ext_resource type="Script" path="res://src/Scripts/Sight.gd" id="1_o4tnc"]
+[ext_resource type="Script" path="res://src/Scripts/Components/Sight.gd" id="1_4nbfn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mctn6"]
 radius = 191.846
@@ -9,7 +9,7 @@ radius = 191.846
 radius = 371.345
 
 [node name="Sight" type="Node2D"]
-script = ExtResource("1_o4tnc")
+script = ExtResource("1_4nbfn")
 
 [node name="Enter" type="Area2D" parent="."]
 visible = false

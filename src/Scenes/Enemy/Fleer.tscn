@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bqdpfstiq5rfb" path="res://src/Scenes/Enemy/Cell.tscn" id="1_8fvpo"]
 [ext_resource type="Texture2D" uid="uid://ck5x256t5a01f" path="res://src/Assets/Art/Cells/En_1.png" id="2_8dbb2"]
-[ext_resource type="PackedScene" uid="uid://bg573txp5myv0" path="res://src/Scenes/Sight.tscn" id="2_36aop"]
+[ext_resource type="PackedScene" uid="uid://bg573txp5myv0" path="res://src/Scenes/Components/Sight.tscn" id="2_36aop"]
 [ext_resource type="Script" path="res://src/Scripts/States/FleeingState.gd" id="2_wbhrk"]
 
 [node name="Fleer" instance=ExtResource("1_8fvpo")]

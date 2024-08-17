@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://uv30qc2qalff"]
 
 [ext_resource type="PackedScene" uid="uid://bqdpfstiq5rfb" path="res://src/Scenes/Enemy/Cell.tscn" id="1_wdi83"]
-[ext_resource type="PackedScene" uid="uid://bg573txp5myv0" path="res://src/Scenes/Sight.tscn" id="2_0njqb"]
+[ext_resource type="PackedScene" uid="uid://bg573txp5myv0" path="res://src/Scenes/Components/Sight.tscn" id="2_0njqb"]
 [ext_resource type="Script" path="res://src/Scripts/States/SplitState.gd" id="3_1lm38"]
 [ext_resource type="PackedScene" uid="uid://dcwe2fhdssqod" path="res://src/Scenes/Enemy/Fleer.tscn" id="4_ermjx"]
 
