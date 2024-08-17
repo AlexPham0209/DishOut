@@ -12,3 +12,14 @@ res://src/Scripts/States/StateMachine.gd
 res://src/Scripts/States/AttackingState.gd
 res://src/Scripts/States/FleeingState.gd
 res://src/Scripts/States/RoamingState.gd
+res://src/Scripts/Reward.gd
+res://src/Scripts/Effect.gd
+res://src/Scripts/Effects/GrowEffect.gd
+res://src/Scripts/Effects/Effect.gd
+res://src/Scenes/Enemy/Posioner.tscn
+res://src/Scenes/Enemy/Poisoner.tscn
+res://src/Scenes/Enemy/PoisonTimer.gd
+res://src/Scenes/PoisonTimer.tscn
+res://src/Scripts/PoisonTimer.gd
+res://src/Scripts/Effects/PoisonEffect.gd
+res://src/Scenes/TestScene/PoisonTest.tscn

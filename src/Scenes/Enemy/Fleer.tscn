@@ -16,12 +16,6 @@ entity = NodePath("..")
 state_machine = NodePath("../States")
 reaction_state = "Fleeing"
 
-[node name="Enter" parent="Sight" index="0"]
-visible = false
-
-[node name="Exit" parent="Sight" index="1"]
-visible = false
-
 [node name="Fleeing" type="Node2D" parent="States" index="2" node_paths=PackedStringArray("sprite")]
 script = ExtResource("2_wbhrk")
 sprite = NodePath("../../Icon")

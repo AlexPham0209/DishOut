@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="GrowEffect" load_steps=2 format=3 uid="uid://b52ef2wvfkw46"]
+
+[ext_resource type="Script" path="res://src/Scripts/Effects/GrowEffect.gd" id="1_ueb86"]
+
+[resource]
+script = ExtResource("1_ueb86")
+rate = 1

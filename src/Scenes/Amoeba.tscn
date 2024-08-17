@@ -10,6 +10,7 @@ size = Vector2(32, 38)
 
 [node name="Amoeba" type="CharacterBody2D"]
 script = ExtResource("1_3xfsd")
+growth = 1
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)

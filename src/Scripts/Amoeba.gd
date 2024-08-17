@@ -67,7 +67,6 @@ func grow(amount):
 		print("Max growth.  Continue to next level")
 		return 
 	
-	
 	#Increment total growth
 	growth += amount
 	notify_cells.emit()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bqdpfstiq5rfb"]
+[gd_scene load_steps=11 format=3 uid="uid://bqdpfstiq5rfb"]
 
 [ext_resource type="Script" path="res://src/Scripts/Enemy.gd" id="1_rcpp6"]
 [ext_resource type="Texture2D" uid="uid://c8022nv1f3loo" path="res://icon.png" id="2_qj6me"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://b2ks2vr8d0vqd" path="res://src/Scenes/State.tscn" id="5_ft01m"]
 [ext_resource type="Script" path="res://src/Scripts/States/RoamingState.gd" id="6_knp05"]
 [ext_resource type="Script" path="res://src/Scripts/States/DeathState.gd" id="7_25yi1"]
+[ext_resource type="Script" path="res://src/Scripts/Effects/Effect.gd" id="8_phfqo"]
+[ext_resource type="Resource" uid="uid://b52ef2wvfkw46" path="res://src/Scripts/Effects/GrowEffect.tres" id="9_1jlkj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qq0lg"]
 size = Vector2(12, 12)
@@ -39,6 +41,7 @@ speed = 50.0
 
 [node name="Death" parent="States" instance=ExtResource("5_ft01m")]
 script = ExtResource("7_25yi1")
+effects = Array[ExtResource("8_phfqo")]([ExtResource("9_1jlkj")])
 
 [connection signal="area_entered" from="Overlap" to="." method="player_enter"]
 [connection signal="area_exited" from="Overlap" to="." method="player_exit"]

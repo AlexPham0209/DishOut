@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bu1eapda4juve"]
+
+[ext_resource type="Script" path="res://src/Scripts/PoisonTimer.gd" id="1_ot2uy"]
+
+[node name="PoisonTimer" type="Timer"]
+autostart = true
+script = ExtResource("1_ot2uy")
+ticks = 5
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

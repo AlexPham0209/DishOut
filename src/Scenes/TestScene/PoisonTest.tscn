@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://df2vjeh54kjpx"]
+
+[ext_resource type="PackedScene" uid="uid://bqdpfstiq5rfb" path="res://src/Scenes/Enemy/Cell.tscn" id="1_3vtr1"]
+[ext_resource type="Script" path="res://src/Scripts/Effects/Effect.gd" id="2_650wc"]
+[ext_resource type="Resource" uid="uid://b52ef2wvfkw46" path="res://src/Scripts/Effects/GrowEffect.tres" id="3_w60cc"]
+[ext_resource type="Resource" uid="uid://dsc67v6ykr7oo" path="res://src/Scripts/Effects/PoisonEffect.tres" id="4_sasut"]
+[ext_resource type="PackedScene" uid="uid://c0utwiykrhy5g" path="res://src/Scenes/Amoeba.tscn" id="5_oan0j"]
+[ext_resource type="Texture2D" uid="uid://c8022nv1f3loo" path="res://icon.png" id="6_g5vbd"]
+
+[node name="PoisonTest" type="Node2D"]
+
+[node name="Cell" parent="." instance=ExtResource("1_3vtr1")]
+position = Vector2(449, 155)
+
+[node name="Death" parent="Cell/States" index="1"]
+effects = Array[ExtResource("2_650wc")]([ExtResource("3_w60cc"), ExtResource("4_sasut")])
+
+[node name="Amoeba" parent="." instance=ExtResource("5_oan0j")]
+position = Vector2(192, 148)
+cam_growth_rate = 0.05
+scale_growth_rate = 0.75
+growth = 10
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(317, 199)
+texture = ExtResource("6_g5vbd")
+
+[editable path="Cell"]
