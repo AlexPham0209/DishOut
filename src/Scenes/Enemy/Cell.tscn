@@ -4,18 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://c8022nv1f3loo" path="res://icon.png" id="2_qj6me"]
 [ext_resource type="Script" path="res://src/Scripts/Components/Growth.gd" id="3_0pkhx"]
 [ext_resource type="PackedScene" uid="uid://cd1ne1rmx77gt" path="res://src/Scenes/States/StateMachine.tscn" id="3_whqsm"]
-[ext_resource type="Script" path="res://src/Scripts/Components/Hurtbox.gd" id="3_xskog"]
 [ext_resource type="Script" path="res://src/Scripts/States/StateMachine.gd" id="4_io8qd"]
 [ext_resource type="PackedScene" uid="uid://tv55ugnq6ijl" path="res://src/Scenes/Components/Invincibility.tscn" id="4_ywib0"]
+[ext_resource type="PackedScene" uid="uid://dsua2mr50l6wm" path="res://src/Scenes/Components/Hurtbox.tscn" id="5_ek4bs"]
 [ext_resource type="PackedScene" uid="uid://b2ks2vr8d0vqd" path="res://src/Scenes/States/State.tscn" id="5_ft01m"]
 [ext_resource type="Script" path="res://src/Scripts/States/RoamingState.gd" id="6_knp05"]
 [ext_resource type="Script" path="res://src/Scripts/States/DeathState.gd" id="7_25yi1"]
 [ext_resource type="Script" path="res://src/Scripts/Effects/Effect.gd" id="8_phfqo"]
 [ext_resource type="Resource" uid="uid://b52ef2wvfkw46" path="res://src/Resources/Effects/GrowEffect.tres" id="9_1jlkj"]
-[ext_resource type="PackedScene" uid="uid://b8yujopof8a6l" path="res://src/Scenes/Blood.tscn" id="10_vp6py"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qq0lg"]
-size = Vector2(19.5, 20)
+[ext_resource type="PackedScene" uid="uid://b8yujopof8a6l" path="res://src/Scenes/Trail/Blood.tscn" id="10_vp6py"]
 
 [sub_resource type="Animation" id="Animation_10ycn"]
 length = 0.001
@@ -54,8 +51,14 @@ _data = {
 "Walk": SubResource("Animation_wouwy")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hlr45"]
+size = Vector2(32, 32)
+
 [node name="Cell" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 16
 script = ExtResource("1_rcpp6")
+growth_rate = 0.15
 
 [node name="Icon" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
@@ -66,15 +69,9 @@ script = ExtResource("3_0pkhx")
 
 [node name="Invincibility" parent="." instance=ExtResource("4_ywib0")]
 
-[node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("growth", "invincibility")]
-collision_layer = 2
-monitorable = false
-script = ExtResource("3_xskog")
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("growth", "invincibility") instance=ExtResource("5_ek4bs")]
 growth = NodePath("../Growth")
 invincibility = NodePath("../Invincibility")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-shape = SubResource("RectangleShape2D_qq0lg")
 
 [node name="States" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("3_whqsm")]
 script = ExtResource("4_io8qd")
@@ -97,5 +94,8 @@ blood = ExtResource("10_vp6py")
 libraries = {
 "": SubResource("AnimationLibrary_u65de")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hlr45")
 
 [connection signal="take_damage" from="Hurtbox" to="." method="damage"]

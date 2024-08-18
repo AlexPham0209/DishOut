@@ -2,6 +2,7 @@ class_name Hurtbox
 extends Area2D
 
 signal take_damage()
+signal gain_health()
 
 @export var growth : Growth
 @export var invincibility : Invincibility
@@ -9,7 +10,7 @@ signal take_damage()
 func _process(delta: float) -> void:
 	if get_overlapping_areas().size() <= 0 or invincibility.is_invincible:
 		return
-		
+	
 	var body = get_overlapping_areas()[0] as Hurtbox
 	
 	if growth.value > body.growth.value:

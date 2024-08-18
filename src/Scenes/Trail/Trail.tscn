@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://c6jd0d7i1m1ko"]
 
 [ext_resource type="Script" path="res://src/Scripts/Trail/Trail.gd" id="1_4lcs1"]
-[ext_resource type="PackedScene" uid="uid://b8yujopof8a6l" path="res://src/Scenes/Blood.tscn" id="2_e7bj6"]
+[ext_resource type="PackedScene" uid="uid://c02v1srg6fdem" path="res://src/Scenes/Trail/Goo.tscn" id="2_3n61c"]
 
 [node name="Trail" type="Node2D"]
 script = ExtResource("1_4lcs1")
-texture = ExtResource("2_e7bj6")
+texture = ExtResource("2_3n61c")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.05

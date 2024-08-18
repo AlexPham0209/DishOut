@@ -21,6 +21,7 @@ func execute():
 	instance = spawner.instantiate()
 	#instance.position = Vector2.ZERO
 	entity.add_child(instance)
+	instance.scale = entity.scale
 	timer.start()
 
 

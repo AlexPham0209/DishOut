@@ -35,6 +35,7 @@ func _ready() -> void:
 	camera.zoom = (start_zoom - (growth.get_vector() * cam_growth_rate)).clamp(Vector2(min, min), Vector2.ONE)
 	Global.player = self
 	ability.entity = self
+	Global.grow.emit.call_deferred(growth.value)
 
 
 func _physics_process(delta: float) -> void:
@@ -76,6 +77,9 @@ func rotate_sprite(angle):
 func damage():
 	grow(-1)
 	
+func heal():
+	grow(1)
+		
 func grow(amount):
 	#Once reached max growth, then go to the next level
 	growth.value += amount
@@ -87,8 +91,9 @@ func grow(amount):
 	
 	if growth.value < 0:
 		queue_free()
-	 
+	
 	notify_cells.emit()
+	Global.grow.emit(growth.value)
 	
 	#Calculate new scale
 	var new_scale = start_scale + (growth.get_vector() * scale_growth_rate)

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c02v1srg6fdem"]
+
+[ext_resource type="PackedScene" uid="uid://b8yujopof8a6l" path="res://src/Scenes/Trail/Blood.tscn" id="1_no1dr"]
+[ext_resource type="Script" path="res://src/Scenes/Trail/Goo.gd" id="2_lg5w1"]
+
+[node name="Goo" instance=ExtResource("1_no1dr")]
+self_modulate = Color(0.96, 0.64464, 0.2592, 1)
+explosiveness = 0.5
+script = ExtResource("2_lg5w1")

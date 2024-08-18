@@ -1,12 +1,36 @@
-[gd_scene load_steps=11 format=3 uid="uid://dvt6tmyt3u46e"]
+[gd_scene load_steps=17 format=3 uid="uid://dvt6tmyt3u46e"]
 
 [ext_resource type="Shader" path="res://src/Shaders/Vignette.gdshader" id="1_pwt6p"]
+[ext_resource type="Script" path="res://src/Scripts/Level.gd" id="1_r3wpv"]
+[ext_resource type="PackedScene" uid="uid://5iaqrrp5m1ar" path="res://src/Scenes/Enemy/Chaser.tscn" id="1_ry6n2"]
 [ext_resource type="PackedScene" uid="uid://c0utwiykrhy5g" path="res://src/Scenes/Amoeba.tscn" id="2_7tf01"]
-[ext_resource type="PackedScene" uid="uid://dni3h0123ehkk" path="res://src/Scenes/Enemy/Spawner.tscn" id="2_e6vjr"]
+[ext_resource type="Script" path="res://src/Scripts/LevelGeneration/SpawnData.gd" id="2_lhyli"]
 [ext_resource type="Shader" path="res://src/Shaders/ChromaticAberration.gdshader" id="2_xsx4r"]
-[ext_resource type="PackedScene" uid="uid://uv30qc2qalff" path="res://src/Scenes/Enemy/Splitter.tscn" id="3_q2wcw"]
+[ext_resource type="PackedScene" uid="uid://dcwe2fhdssqod" path="res://src/Scenes/Enemy/Fleer.tscn" id="3_xicmk"]
 [ext_resource type="Shader" path="res://src/Shaders/Dash.gdshader" id="5_j72a0"]
-[ext_resource type="PackedScene" uid="uid://svqfj24tt0ep" path="res://src/Scenes/Enemy/Grower.tscn" id="5_y1d1x"]
+[ext_resource type="Script" path="res://src/Scenes/UI/GrowthText.gd" id="5_r0xt8"]
+[ext_resource type="Script" path="res://src/Scenes/UI/GrowthLeft.gd" id="6_eg2vm"]
+
+[sub_resource type="Resource" id="Resource_264hh"]
+script = ExtResource("2_lhyli")
+type = ExtResource("3_xicmk")
+amount = 15
+min_size = 0
+max_size = 5
+
+[sub_resource type="Resource" id="Resource_t5orb"]
+script = ExtResource("2_lhyli")
+type = ExtResource("1_ry6n2")
+amount = 10
+min_size = 10
+max_size = 20
+
+[sub_resource type="Resource" id="Resource_yhsp7"]
+script = ExtResource("2_lhyli")
+type = ExtResource("3_xicmk")
+amount = 15
+min_size = 5
+max_size = 10
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gbqte"]
 shader = ExtResource("5_j72a0")
@@ -31,27 +55,19 @@ shader_parameter/g_displacement = Vector2(0, 0)
 shader_parameter/b_displacement = Vector2(-1.25, 0)
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_r3wpv")
+amount_left = 15
+spawns = Array[ExtResource("2_lhyli")]([SubResource("Resource_264hh"), SubResource("Resource_t5orb"), SubResource("Resource_yhsp7")])
 
 [node name="Enemies" type="Node2D" parent="."]
-
-[node name="Splitter" parent="Enemies" instance=ExtResource("3_q2wcw")]
-position = Vector2(422, 58)
-growth_rate = 0.15
-
-[node name="Spawner" parent="Enemies" instance=ExtResource("2_e6vjr")]
-position = Vector2(185, 228)
-growth_rate = 0.15
-
-[node name="Grower" parent="Enemies" instance=ExtResource("5_y1d1x")]
-position = Vector2(456, 198)
-growth_rate = 0.15
 
 [node name="Amoeba" parent="." instance=ExtResource("2_7tf01")]
 material = SubResource("ShaderMaterial_gbqte")
 position = Vector2(311, 174)
 friction = 15.0
-cam_growth_rate = 0.01
-scale_growth_rate = 0.15
+cam_growth_rate = 0.04
+scale_growth_rate = 0.4
+min = 0.25
 
 [node name="Growth" parent="Amoeba" index="4"]
 value = 1
@@ -87,15 +103,51 @@ anchors_preset = 0
 offset_right = 640.0
 offset_bottom = 360.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="UI/Control"]
+[node name="GrowthText" type="Control" parent="UI/Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_r0xt8")
+
+[node name="Text" type="RichTextLabel" parent="UI/Control/GrowthText"]
 layout_mode = 0
-offset_right = 153.0
+offset_right = 83.0
+offset_bottom = 40.0
+text = "Growth: "
+
+[node name="Score" type="RichTextLabel" parent="UI/Control/GrowthText"]
+layout_mode = 0
+offset_left = 83.0
+offset_right = 123.0
 offset_bottom = 40.0
 
-[connection signal="area_entered" from="Enemies/Splitter/Hurtbox" to="Enemies/Splitter" method="player_enter"]
-[connection signal="area_exited" from="Enemies/Splitter/Hurtbox" to="Enemies/Splitter" method="player_exit"]
+[node name="GrowthLeft" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 421.0
+offset_right = 461.0
+offset_bottom = 40.0
+script = ExtResource("6_eg2vm")
 
-[editable path="Enemies/Splitter"]
+[node name="Text" type="RichTextLabel" parent="UI/GrowthLeft"]
+layout_mode = 0
+offset_right = 109.0
+offset_bottom = 40.0
+text = "Amount Left:"
+
+[node name="Score" type="RichTextLabel" parent="UI/GrowthLeft"]
+layout_mode = 0
+offset_left = 109.0
+offset_right = 173.0
+offset_bottom = 40.0
+
+[node name="Limits" type="Node2D" parent="."]
+
+[node name="TopLeft" type="Marker2D" parent="Limits"]
+
+[node name="BottomRight" type="Marker2D" parent="Limits"]
+position = Vector2(2048, 1024)
+
 [editable path="Amoeba"]
 [editable path="Amoeba/Hurtbox"]
 [editable path="Amoeba/Abilities/BoostAbility"]

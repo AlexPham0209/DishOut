@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://8syuojrdilr3"]
+
+[ext_resource type="PackedScene" uid="uid://dvt6tmyt3u46e" path="res://src/Scenes/Levels/Level.tscn" id="1_fn4pg"]
+
+[node name="Level1" instance=ExtResource("1_fn4pg")]
+
+[editable path="Amoeba"]
+[editable path="Amoeba/Hurtbox"]
+[editable path="Amoeba/Abilities/BoostAbility"]

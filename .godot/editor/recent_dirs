@@ -1,10 +1,15 @@
+res://src/Resources/LevelGeneration
+C:/Users/RedAP/Desktop/Game Dev/Godot Project/GMTKGameJam/gmtk-game-jam/src/Scripts/Components
+res://src/Scenes/Levels
+res://src/Scripts
+res://src/Scenes/UI
+res://src/Scenes/Trail
 res://src/Scripts/Trail
 res://src/Shaders
 res://src/Scenes/Abilities
 res://src/Scripts/Abilities
 res://src/Scenes/Components
 res://src/Scripts/Components
-res://src/Scripts
 res://src/Scenes
 res://src/Scenes/Enemy
 res://src/Scripts/States

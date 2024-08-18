@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d3m4l8d1e6tnu"]
+
+[ext_resource type="Script" path="res://src/Scripts/LevelGeneration/SpawnData.gd" id="1_qm7t4"]
+
+[resource]
+script = ExtResource("1_qm7t4")
+amount = 0
+min_size = 0
+max_size = 0

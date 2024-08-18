@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://c0utwiykrhy5g"]
 
 [ext_resource type="Script" path="res://src/Scripts/Cells/Amoeba.gd" id="1_3xfsd"]
-[ext_resource type="Texture2D" uid="uid://cn6w2amcfartv" path="res://src/Assets/Art/Petra/Pro_1.png" id="2_j3dh1"]
+[ext_resource type="Texture2D" uid="uid://b0wrx73jxa40f" path="res://src/Assets/Art/Petra/Pro_2.png" id="2_y6pxa"]
 [ext_resource type="Script" path="res://src/Scripts/Camera.gd" id="3_tjka0"]
 [ext_resource type="PackedScene" uid="uid://brjdw3n71x6ib" path="res://src/Scenes/Components/Growth.tscn" id="4_5ivvt"]
 [ext_resource type="PackedScene" uid="uid://tv55ugnq6ijl" path="res://src/Scenes/Components/Invincibility.tscn" id="5_q4afd"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://swkgx2pi0q3d" path="res://src/Scenes/Abilities/BoostAbility.tscn" id="7_ydkoi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ul07s"]
-size = Vector2(32, 38)
+size = Vector2(40, 38)
 
 [sub_resource type="Animation" id="Animation_1pqbn"]
 length = 0.001
@@ -50,14 +50,16 @@ _data = {
 }
 
 [node name="Amoeba" type="CharacterBody2D" node_paths=PackedStringArray("ability")]
+collision_mask = 16
 script = ExtResource("1_3xfsd")
 cam_growth_rate = 0.005
 scale_growth_rate = 0.075
 ability = NodePath("Abilities/BoostAbility")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -2.38419e-07)
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_j3dh1")
+texture = ExtResource("2_y6pxa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ul07s")
@@ -82,8 +84,8 @@ libraries = {
 [node name="Invincibility" parent="." instance=ExtResource("5_q4afd")]
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("growth", "invincibility") instance=ExtResource("5_rt8d0")]
-collision_layer = 1
-collision_mask = 2
+collision_layer = 4
+collision_mask = 8
 growth = NodePath("../Growth")
 invincibility = NodePath("../Invincibility")
 
@@ -96,6 +98,7 @@ position = Vector2(0, -1)
 scale = Vector2(1, 0.971408)
 boost_speed = 700.0
 
+[connection signal="gain_health" from="Hurtbox" to="." method="heal"]
 [connection signal="take_damage" from="Hurtbox" to="." method="damage"]
 
 [editable path="Hurtbox"]

@@ -14,9 +14,6 @@ entity = NodePath("..")
 state_machine = NodePath("../States")
 reaction_state = "Split"
 
-[node name="Hurtbox" parent="." index="4"]
-monitorable = true
-
 [node name="Split" type="Node2D" parent="States" index="2"]
 script = ExtResource("3_1lm38")
 amount = 10

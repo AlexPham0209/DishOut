@@ -17,39 +17,37 @@ scale = Vector2(0.5, 0.5)
 
 [node name="Fleer" parent="Enemies/Fleers" instance=ExtResource("2_rl1mq")]
 position = Vector2(246, 423)
-growth = 2
+growth_rate = 0.5
 
 [node name="Fleer2" parent="Enemies/Fleers" instance=ExtResource("2_rl1mq")]
 position = Vector2(246, -15)
-growth = 2
+growth_rate = 0.5
 
 [node name="Fleer3" parent="Enemies/Fleers" instance=ExtResource("2_rl1mq")]
 position = Vector2(355, 263)
-growth = 2
+growth_rate = 0.5
 
 [node name="Fleer4" parent="Enemies/Fleers" instance=ExtResource("2_rl1mq")]
 position = Vector2(-124, 225)
-growth = 2
+growth_rate = 0.5
 
 [node name="Chasers" type="Node2D" parent="Enemies"]
 
 [node name="Chaser" parent="Enemies/Chasers" instance=ExtResource("4_3crid")]
 position = Vector2(116, 313)
-growth = 1
+growth_rate = 0.5
 
 [node name="Chaser2" parent="Enemies/Chasers" instance=ExtResource("4_3crid")]
 position = Vector2(640, 209)
-growth = 1
+growth_rate = 0.5
 
 [node name="Chaser3" parent="Enemies/Chasers" instance=ExtResource("4_3crid")]
 position = Vector2(538, 83)
-growth = 1
+growth_rate = 0.5
 
 [node name="Amoeba" parent="." instance=ExtResource("1_mvl6u")]
 position = Vector2(132, 140)
 max_growth = 50
-cam_growth_rate = 0.005
-scale_growth_rate = 0.075
 min = 0.2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

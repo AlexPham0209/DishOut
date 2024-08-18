@@ -22,10 +22,12 @@ shape = SubResource("CircleShape2D_mctn6")
 [node name="Exit" type="Area2D" parent="."]
 visible = false
 collision_layer = 2
+collision_mask = 4
 monitorable = false
 
 [node name="Area2D" type="CollisionShape2D" parent="Exit"]
 shape = SubResource("CircleShape2D_v48my")
 
-[connection signal="area_entered" from="Enter" to="." method="enter_sight"]
+[connection signal="body_entered" from="Enter" to="." method="enter_sight"]
+[connection signal="body_exited" from="Enter" to="." method="exit_sight"]
 [connection signal="area_exited" from="Exit" to="." method="exit_sight"]

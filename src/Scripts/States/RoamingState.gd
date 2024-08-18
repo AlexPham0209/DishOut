@@ -9,7 +9,7 @@ var target_position : Vector2
 @export var speed : float = 50
 
 func enter(param : Dictionary = {}):
-	change_target_position()
+	target_position = global_position + Vector2(randf_range(-distance, distance), randf_range(-distance, distance))
 
 func physics_update(delta):
 	var e = entity as Cell
