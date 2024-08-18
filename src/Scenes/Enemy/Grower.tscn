@@ -6,6 +6,7 @@
 [node name="Grower" instance=ExtResource("1_enx3a")]
 
 [node name="GrowthTimer" parent="." index="4" instance=ExtResource("2_c71ae")]
+wait_time = 5.0
 one_shot = true
 autostart = true
 max_growth = 5

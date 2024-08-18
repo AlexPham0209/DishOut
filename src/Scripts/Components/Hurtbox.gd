@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 	
 	var body = get_overlapping_areas()[0] as Hurtbox
 	
-	if growth.value > body.growth.value:
+	if growth.value >= body.growth.value:
 		return
 	
 	take_damage.emit()

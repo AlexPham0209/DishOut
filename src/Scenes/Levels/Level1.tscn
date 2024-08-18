@@ -1,8 +1,44 @@
-[gd_scene load_steps=2 format=3 uid="uid://8syuojrdilr3"]
+[gd_scene load_steps=8 format=3 uid="uid://8syuojrdilr3"]
 
 [ext_resource type="PackedScene" uid="uid://dvt6tmyt3u46e" path="res://src/Scenes/Levels/Level.tscn" id="1_fn4pg"]
+[ext_resource type="Script" path="res://src/Scripts/LevelGeneration/SpawnData.gd" id="2_wki27"]
+[ext_resource type="PackedScene" uid="uid://dcwe2fhdssqod" path="res://src/Scenes/Enemy/Fleer.tscn" id="3_owmdx"]
+[ext_resource type="PackedScene" uid="uid://5iaqrrp5m1ar" path="res://src/Scenes/Enemy/Chaser.tscn" id="4_mvqcm"]
+[ext_resource type="PackedScene" uid="uid://c8lqggvyggc5y" path="res://src/Scenes/Levels/Level2.tscn" id="5_vvvou"]
+
+[sub_resource type="Resource" id="Resource_0lobg"]
+script = ExtResource("2_wki27")
+type = ExtResource("3_owmdx")
+amount = 30
+min_size = 0
+max_size = 1
+
+[sub_resource type="Resource" id="Resource_pi8i7"]
+script = ExtResource("2_wki27")
+type = ExtResource("4_mvqcm")
+amount = 5
+min_size = 3
+max_size = 5
 
 [node name="Level1" instance=ExtResource("1_fn4pg")]
+amount_left = 1
+spawns = Array[ExtResource("2_wki27")]([SubResource("Resource_0lobg"), SubResource("Resource_pi8i7")])
+next_level = ExtResource("5_vvvou")
+
+[node name="Growth" parent="Amoeba" index="4"]
+value = 1
+
+[node name="Marker2D12" type="Marker2D" parent="SpawnPoints" index="4"]
+position = Vector2(594, 642)
+
+[node name="Marker2D14" type="Marker2D" parent="SpawnPoints" index="6"]
+position = Vector2(1143, 685)
+
+[node name="Marker2D15" type="Marker2D" parent="SpawnPoints" index="7"]
+position = Vector2(732, 391)
+
+[node name="Marker2D13" type="Marker2D" parent="SpawnPoints" index="13"]
+position = Vector2(1143, 239)
 
 [editable path="Amoeba"]
 [editable path="Amoeba/Hurtbox"]

@@ -25,7 +25,7 @@ effects = Array[ExtResource("4_hgosk")]([])
 
 [node name="Attacking" parent="States" index="2" node_paths=PackedStringArray("sprite") instance=ExtResource("3_tb2ki")]
 script = ExtResource("4_mjn46")
-chase_speed = 125.0
+chase_speed = 300.0
 sprite = NodePath("../../Icon")
 
 [editable path="Sight"]

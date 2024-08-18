@@ -1,12 +1,25 @@
 extends Node2D
 
-@export var amount_left : int
+@export var amount_left : int :
+	set(value):
+		amount_left = value
+		set_amount_left(value)
+	get:
+		return amount_left
+		
 @export var spawns : Array[SpawnData]
+
+@export var next_level : PackedScene
+@export var margin : Vector2 = Vector2(0, 0)
+
+@onready var spawn_points = $SpawnPoints
 @onready var top_left : Marker2D = $Limits/TopLeft
 @onready var bottom_right : Marker2D = $Limits/BottomRight
 
+signal update_amount_left(value)
+
 func _ready() -> void:
-	Global.amount_left = amount_left
+	Global.grow.connect(subtract_growth)
 	spawn_enemies()
 
 func spawn_enemies():
@@ -16,10 +29,26 @@ func spawn_enemies():
 		
 		for i in range(amount):
 			var instance = type.instantiate() as Cell
-			var x = randf_range(top_left.global_position.x, bottom_right.global_position.x)
-			var y = randf_range(bottom_right.global_position.y, top_left.global_position.y)
-			var growth = randi_range(data.min_size, data.max_size) - 1
+			var spawn_point = spawn_points.get_children().pick_random()
+			var x = spawn_point.global_position.x + randf_range(0, margin.x)
+			var y = spawn_point.global_position.y + randf_range(0, margin.y)
+			var growth = randi_range(data.min_size, data.max_size)
 			
 			instance.global_position = Vector2(x, y)
-			get_tree().current_scene.add_child(instance)
+			instance.scale = instance.scale + (Vector2(instance.growth_rate, instance.growth_rate) * growth)
+			get_tree().current_scene.get_node("Enemies").add_child(instance)
+			instance.growth.value = growth
+
+func subtract_growth(amount):
+	amount_left -= amount
 		
+func set_amount_left(value):
+	update_amount_left.emit.call_deferred(value)
+	
+	if amount_left <= 0:
+		finish_level()
+		return
+	
+
+func finish_level():
+	get_tree().change_scene_to_packed(next_level)

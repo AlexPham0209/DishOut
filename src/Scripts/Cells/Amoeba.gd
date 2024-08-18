@@ -29,9 +29,12 @@ var rotate_tween : Tween
 
 func _ready() -> void:
 	start_speed = speed 
+	start_scale = scale 
+	start_zoom = camera.zoom
+	self.scale = start_scale + (Vector2(scale_growth_rate, scale_growth_rate) * growth.value)
+	camera.zoom = start_zoom - (Vector2(cam_growth_rate, cam_growth_rate) * growth.value)
 	Global.player = self
 	ability.entity = self
-	Global.grow.emit.call_deferred(growth.value)
 
 
 func _physics_process(delta: float) -> void:
@@ -81,26 +84,23 @@ func grow(amount):
 	growth.value += amount
 	camera.screen_shake()
 	
-	if growth.value >= max_growth:
-		print("Max growth.  Continue to next level")
-		return 
-	
-	if growth.value < 0:
+	if growth.value <= 0:
 		queue_free()
 	
 	notify_cells.emit()
-	Global.grow.emit(growth.value)
+	Global.grow.emit(amount)
 	
-	#Calculate new scale
-	var new_scale = scale + Vector2(scale_growth_rate, scale_growth_rate)
-	var factor = 0.01 if camera.zoom <= Vector2(0.75, 0.75) else 0.1
-	var new_zoom = (camera.zoom - Vector2(factor, factor)).clamp(Vector2(min, min), Vector2.ONE)
+	var new_scale = start_scale + (Vector2(scale_growth_rate, scale_growth_rate) * growth.value)
+	
+	var change = 0.1/growth.value
+	var new_zoom = start_zoom - (Vector2(0.1, 0.1) * growth.value) if camera.zoom >= Vector2(0.75, 0.75) else \
+		Vector2(0.75, 0.75) - (Vector2(0.025, 0.025) * (growth.value + int(change) - 1))
 
 	#Procedurally animate the scale of the player and the zoom of the camera to new sizes
 	scale_tween = create_tween()
 	scale_tween.parallel().tween_property(self, "scale", new_scale, 1.0). \
 		set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
-	scale_tween.parallel().tween_property(camera, "zoom", new_zoom, 1.0). \
+	scale_tween.parallel().tween_property(camera, "zoom", new_zoom.clamp(Vector2(0.25, 0.25), Vector2.ONE), 1.0). \
 		set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	scale_tween.play()
 	

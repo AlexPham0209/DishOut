@@ -3,10 +3,10 @@ extends CharacterBody2D
 
 @export var margin : Vector2 = Vector2(0.25, 0.25)
 @onready var state_machine : StateMachine = $States
-@onready var death_state : State = $States/Death
 @onready var sprite : Sprite2D = $Icon
 @onready var growth = $Growth
 @onready var invincibility : Invincibility = $Invincibility
+@export var death_state : String = "Death"
 var walk_tween : Tween
 var playing : bool = false
 
@@ -17,12 +17,13 @@ var start_scale : Vector2
 signal eaten
 
 func _ready() -> void:
-	self.scale = self.scale + (Vector2(growth_rate, growth_rate) * growth.value)
+	start_scale = self.scale
+	self.scale = start_scale + (Vector2(growth_rate, growth_rate) * growth.value)
 
 func _process(delta: float) -> void:
 	if velocity != Vector2.ZERO:
 		walk_animation()
-	else:
+	elif walk_tween != null:
 		walk_tween.stop()
 		
 	move_and_slide()
@@ -46,14 +47,14 @@ func walk_animation():
 	
 func damage():
 	eaten.emit()
-	state_machine.transition_to("Death", {})
+	state_machine.transition_to(death_state, {})
 		
 func grow(amount):
 	#Once reached max growth, then go to the next level
 	growth.value += amount
 
 	#Calculate new scale
-	var new_scale = start_scale + (growth.get_vector() * growth_rate)
+	var new_scale = start_scale + (Vector2(growth_rate, growth_rate) * growth.value)
 	#Procedurally animate the scale of the player and the zoom of the camera to new sizes
 	scale_tween = create_tween()
 	scale_tween.tween_property(self, "scale", new_scale, 1.0). \

@@ -1,0 +1,68 @@
+[gd_scene load_steps=13 format=3 uid="uid://7k5nu5ldurte"]
+
+[ext_resource type="PackedScene" uid="uid://dvt6tmyt3u46e" path="res://src/Scenes/Levels/Level.tscn" id="1_svtyb"]
+[ext_resource type="Script" path="res://src/Scripts/LevelGeneration/SpawnData.gd" id="2_8dhm1"]
+[ext_resource type="PackedScene" uid="uid://dcwe2fhdssqod" path="res://src/Scenes/Enemy/Fleer.tscn" id="3_j8cad"]
+[ext_resource type="PackedScene" uid="uid://5iaqrrp5m1ar" path="res://src/Scenes/Enemy/Chaser.tscn" id="4_5i42m"]
+[ext_resource type="PackedScene" uid="uid://uv30qc2qalff" path="res://src/Scenes/Enemy/Splitter.tscn" id="5_6au43"]
+[ext_resource type="PackedScene" uid="uid://svqfj24tt0ep" path="res://src/Scenes/Enemy/Grower.tscn" id="6_pm8vb"]
+
+[sub_resource type="Resource" id="Resource_5y733"]
+script = ExtResource("2_8dhm1")
+type = ExtResource("3_j8cad")
+amount = 15
+min_size = 0
+max_size = 3
+
+[sub_resource type="Resource" id="Resource_oj0x8"]
+script = ExtResource("2_8dhm1")
+type = ExtResource("3_j8cad")
+amount = 5
+min_size = 5
+max_size = 10
+
+[sub_resource type="Resource" id="Resource_8icig"]
+script = ExtResource("2_8dhm1")
+type = ExtResource("4_5i42m")
+amount = 5
+min_size = 5
+max_size = 7
+
+[sub_resource type="Resource" id="Resource_slqev"]
+script = ExtResource("2_8dhm1")
+type = ExtResource("4_5i42m")
+amount = 3
+min_size = 10
+max_size = 12
+
+[sub_resource type="Resource" id="Resource_3r3gf"]
+script = ExtResource("2_8dhm1")
+type = ExtResource("5_6au43")
+amount = 5
+min_size = 5
+max_size = 7
+
+[sub_resource type="Resource" id="Resource_aplfi"]
+script = ExtResource("2_8dhm1")
+type = ExtResource("6_pm8vb")
+amount = 10
+min_size = 0
+max_size = 0
+
+[node name="Level3" instance=ExtResource("1_svtyb")]
+amount_left = 35
+spawns = Array[ExtResource("2_8dhm1")]([SubResource("Resource_5y733"), SubResource("Resource_oj0x8"), SubResource("Resource_8icig"), SubResource("Resource_slqev"), SubResource("Resource_3r3gf"), SubResource("Resource_aplfi")])
+margin = Vector2(64, 64)
+
+[node name="Grower" parent="Enemies" index="0" instance=ExtResource("6_pm8vb")]
+position = Vector2(1226, 567)
+
+[node name="Growth" parent="Enemies/Grower" index="1"]
+value = 3
+
+[connection signal="grow" from="Enemies/Grower/GrowthTimer" to="Enemies/Grower" method="grow"]
+
+[editable path="Enemies/Grower"]
+[editable path="Amoeba"]
+[editable path="Amoeba/Hurtbox"]
+[editable path="Amoeba/Abilities/BoostAbility"]
