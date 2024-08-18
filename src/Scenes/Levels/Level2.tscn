@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://c8lqggvyggc5y"]
+[gd_scene load_steps=12 format=3 uid="uid://c8lqggvyggc5y"]
 
 [ext_resource type="PackedScene" uid="uid://dvt6tmyt3u46e" path="res://src/Scenes/Levels/Level.tscn" id="1_2x1td"]
 [ext_resource type="Script" path="res://src/Scripts/LevelGeneration/SpawnData.gd" id="2_dbj24"]
 [ext_resource type="PackedScene" uid="uid://uv30qc2qalff" path="res://src/Scenes/Enemy/Splitter.tscn" id="3_x6mjk"]
 [ext_resource type="PackedScene" uid="uid://dcwe2fhdssqod" path="res://src/Scenes/Enemy/Fleer.tscn" id="4_d8kr7"]
 [ext_resource type="PackedScene" uid="uid://5iaqrrp5m1ar" path="res://src/Scenes/Enemy/Chaser.tscn" id="5_5ctfl"]
+[ext_resource type="PackedScene" uid="uid://7k5nu5ldurte" path="res://src/Scenes/Levels/Level3.tscn" id="6_3ia1y"]
 
 [sub_resource type="Resource" id="Resource_w0j33"]
 script = ExtResource("2_dbj24")
@@ -42,8 +43,9 @@ min_size = 5
 max_size = 10
 
 [node name="Level2" instance=ExtResource("1_2x1td")]
-amount_left = 50
+amount = 3
 spawns = Array[ExtResource("2_dbj24")]([SubResource("Resource_w0j33"), SubResource("Resource_v8fdn"), SubResource("Resource_pgh2o"), SubResource("Resource_6rxg6"), SubResource("Resource_iri3h")])
+next_level = ExtResource("6_3ia1y")
 margin = Vector2(64, 64)
 
 [editable path="Amoeba"]

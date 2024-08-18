@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://7k5nu5ldurte"]
+[gd_scene load_steps=14 format=3 uid="uid://7k5nu5ldurte"]
 
 [ext_resource type="PackedScene" uid="uid://dvt6tmyt3u46e" path="res://src/Scenes/Levels/Level.tscn" id="1_svtyb"]
 [ext_resource type="Script" path="res://src/Scripts/LevelGeneration/SpawnData.gd" id="2_8dhm1"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://5iaqrrp5m1ar" path="res://src/Scenes/Enemy/Chaser.tscn" id="4_5i42m"]
 [ext_resource type="PackedScene" uid="uid://uv30qc2qalff" path="res://src/Scenes/Enemy/Splitter.tscn" id="5_6au43"]
 [ext_resource type="PackedScene" uid="uid://svqfj24tt0ep" path="res://src/Scenes/Enemy/Grower.tscn" id="6_pm8vb"]
+[ext_resource type="PackedScene" uid="uid://c8xs2irh3asdx" path="res://src/Scenes/Levels/Level4.tscn" id="7_owgje"]
 
 [sub_resource type="Resource" id="Resource_5y733"]
 script = ExtResource("2_8dhm1")
@@ -50,8 +51,8 @@ min_size = 0
 max_size = 0
 
 [node name="Level3" instance=ExtResource("1_svtyb")]
-amount_left = 35
 spawns = Array[ExtResource("2_8dhm1")]([SubResource("Resource_5y733"), SubResource("Resource_oj0x8"), SubResource("Resource_8icig"), SubResource("Resource_slqev"), SubResource("Resource_3r3gf"), SubResource("Resource_aplfi")])
+next_level = ExtResource("7_owgje")
 margin = Vector2(64, 64)
 
 [node name="Grower" parent="Enemies" index="0" instance=ExtResource("6_pm8vb")]
@@ -59,8 +60,6 @@ position = Vector2(1226, 567)
 
 [node name="Growth" parent="Enemies/Grower" index="1"]
 value = 3
-
-[connection signal="grow" from="Enemies/Grower/GrowthTimer" to="Enemies/Grower" method="grow"]
 
 [editable path="Enemies/Grower"]
 [editable path="Amoeba"]

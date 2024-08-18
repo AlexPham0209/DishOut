@@ -33,6 +33,7 @@ func _ready() -> void:
 	start_zoom = camera.zoom
 	self.scale = start_scale + (Vector2(scale_growth_rate, scale_growth_rate) * growth.value)
 	camera.zoom = start_zoom - (Vector2(cam_growth_rate, cam_growth_rate) * growth.value)
+	Global.grow.emit(growth.value)
 	Global.player = self
 	ability.entity = self
 

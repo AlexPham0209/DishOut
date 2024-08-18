@@ -21,7 +21,7 @@ min_size = 3
 max_size = 5
 
 [node name="Level1" instance=ExtResource("1_fn4pg")]
-amount_left = 1
+amount = 1
 spawns = Array[ExtResource("2_wki27")]([SubResource("Resource_0lobg"), SubResource("Resource_pi8i7")])
 next_level = ExtResource("5_vvvou")
 

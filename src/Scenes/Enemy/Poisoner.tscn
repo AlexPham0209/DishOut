@@ -1,5 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cho6hfuheh6n0"]
+[gd_scene load_steps=6 format=3 uid="uid://cho6hfuheh6n0"]
 
 [ext_resource type="PackedScene" uid="uid://bqdpfstiq5rfb" path="res://src/Scenes/Enemy/Cell.tscn" id="1_x7hw2"]
+[ext_resource type="Script" path="res://src/Scripts/Effects/Effect.gd" id="2_8c8sn"]
+[ext_resource type="Resource" uid="uid://b52ef2wvfkw46" path="res://src/Resources/Effects/GrowEffect.tres" id="3_0xjhc"]
+[ext_resource type="Script" path="res://src/Scripts/Effects/PoisonEffect.gd" id="4_vuisb"]
+
+[sub_resource type="Resource" id="Resource_bkkcs"]
+script = ExtResource("4_vuisb")
 
 [node name="Poisoner" instance=ExtResource("1_x7hw2")]
+
+[node name="Death" parent="States" index="1"]
+effects = Array[ExtResource("2_8c8sn")]([ExtResource("3_0xjhc"), SubResource("Resource_bkkcs")])

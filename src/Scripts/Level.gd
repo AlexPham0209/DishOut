@@ -1,6 +1,7 @@
 extends Node2D
 
-@export var amount_left : int :
+@export var amount : int
+var amount_left : int :
 	set(value):
 		amount_left = value
 		set_amount_left(value)
@@ -20,6 +21,7 @@ signal update_amount_left(value)
 
 func _ready() -> void:
 	Global.grow.connect(subtract_growth)
+	amount_left = amount
 	spawn_enemies()
 
 func spawn_enemies():
@@ -43,7 +45,7 @@ func subtract_growth(amount):
 	amount_left -= amount
 		
 func set_amount_left(value):
-	update_amount_left.emit.call_deferred(value)
+	update_amount_left.emit(value)
 	
 	if amount_left <= 0:
 		finish_level()

@@ -1,7 +1,7 @@
 class_name PoisonEffect
 extends Effect
 
-var poison_timer = preload("res://src/Scenes/PoisonTimer.tscn")
+var poison_timer = preload("res://src/Scenes/Components/PoisonTimer.tscn")
 
 func give_effect():
 	var instance : PoisonTimer = poison_timer.instantiate()

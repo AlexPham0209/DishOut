@@ -25,3 +25,8 @@ res://src/Scripts/States/DeathState.gd
 res://src/Scripts/Components/SpawnTimer.gd
 res://src/Scripts/States/SplitState.gd
 res://src/Scripts/Trail/Trail.gd
+res://src/Scenes/Levels/Level4.tscn
+res://src/Scenes/Enemy/Poisoner.tscn
+res://src/Scripts/Effects/PoisonEffect.gd
+res://src/Scenes/Components/PoisonTimer.tscn
+res://src/Scripts/Components/PoisonTimer.gd
