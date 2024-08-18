@@ -13,6 +13,7 @@ var amount_left : int :
 @export var next_level : PackedScene
 @export var margin : Vector2 = Vector2(0, 0)
 
+@onready var enemies = $Enemies
 @onready var spawn_points = $SpawnPoints
 @onready var top_left : Marker2D = $Limits/TopLeft
 @onready var bottom_right : Marker2D = $Limits/BottomRight
@@ -34,12 +35,12 @@ func spawn_enemies():
 			var spawn_point = spawn_points.get_children().pick_random()
 			var x = spawn_point.global_position.x + randf_range(0, margin.x)
 			var y = spawn_point.global_position.y + randf_range(0, margin.y)
-			var growth = randi_range(data.min_size, data.max_size)
-			
+
 			instance.global_position = Vector2(x, y)
-			instance.scale = instance.scale + (Vector2(instance.growth_rate, instance.growth_rate) * growth)
-			get_tree().current_scene.get_node("Enemies").add_child(instance)
-			instance.growth.value = growth
+			instance.min = data.min_size
+			instance.max = data.max_size
+			
+			enemies.add_child(instance)
 
 func subtract_growth(amount):
 	amount_left -= amount

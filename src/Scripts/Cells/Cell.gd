@@ -14,10 +14,14 @@ var playing : bool = false
 var scale_tween : Tween
 var start_scale : Vector2
 
+var min : int
+var max : int
+
 signal eaten
 
 func _ready() -> void:
 	start_scale = self.scale
+	growth.value = randi_range(min, max)
 	self.scale = start_scale + (Vector2(growth_rate, growth_rate) * growth.value)
 
 func _process(delta: float) -> void:

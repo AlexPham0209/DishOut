@@ -12,7 +12,7 @@ func enter(param : Dictionary = {}):
 	var instance = blood.instantiate() 
 	instance.global_position = owner.global_position 
 	
-	if get_tree() != null:
-		get_tree().root.add_child(instance)
-		get_tree().root.move_child(instance, 0)
+	if get_tree() != null and get_tree().current_scene != null:
+		get_tree().current_scene.add_child(instance)
+		get_tree().current_scene.move_child(instance, 0)
 	entity.queue_free()

@@ -30,3 +30,4 @@ res://src/Scenes/Enemy/Poisoner.tscn
 res://src/Scripts/Effects/PoisonEffect.gd
 res://src/Scenes/Components/PoisonTimer.tscn
 res://src/Scripts/Components/PoisonTimer.gd
+res://src/Scenes/Cutscenes/Cutscene.tscn

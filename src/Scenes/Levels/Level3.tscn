@@ -51,6 +51,7 @@ min_size = 0
 max_size = 0
 
 [node name="Level3" instance=ExtResource("1_svtyb")]
+amount = 30
 spawns = Array[ExtResource("2_8dhm1")]([SubResource("Resource_5y733"), SubResource("Resource_oj0x8"), SubResource("Resource_8icig"), SubResource("Resource_slqev"), SubResource("Resource_3r3gf"), SubResource("Resource_aplfi")])
 next_level = ExtResource("7_owgje")
 margin = Vector2(64, 64)

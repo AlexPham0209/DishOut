@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://0jng8ajl3m40"]
+
+[node name="Cutscene" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextBox" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/TextBox"]
+self_modulate = Color(1, 1, 1, 0.517647)
+offset_left = 19.0
+offset_top = 220.0
+offset_right = 616.0
+offset_bottom = 360.0
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TextBox"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 220.0
+offset_right = 616.0
+offset_bottom = 360.0

@@ -24,9 +24,9 @@ max_size = 4
 [sub_resource type="Resource" id="Resource_xacuq"]
 script = ExtResource("2_q63fv")
 type = ExtResource("4_y65ho")
-amount = 0
-min_size = 0
-max_size = 0
+amount = 10
+min_size = 5
+max_size = 10
 
 [sub_resource type="Resource" id="Resource_fyjwy"]
 script = ExtResource("2_q63fv")
@@ -38,12 +38,14 @@ max_size = 2
 [sub_resource type="Resource" id="Resource_0wnbe"]
 script = ExtResource("2_q63fv")
 type = ExtResource("6_1q7yh")
-amount = 0
+amount = 4
 min_size = 0
-max_size = 0
+max_size = 2
 
 [node name="Level4" instance=ExtResource("1_koo6c")]
+amount = 50
 spawns = Array[ExtResource("2_q63fv")]([SubResource("Resource_vr333"), SubResource("Resource_ap0ei"), SubResource("Resource_xacuq"), SubResource("Resource_fyjwy"), SubResource("Resource_0wnbe")])
+margin = Vector2(128, 128)
 
 [node name="Poisoner" parent="." index="8" instance=ExtResource("5_2mtjl")]
 position = Vector2(1126, 541)
