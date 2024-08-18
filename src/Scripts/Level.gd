@@ -18,8 +18,8 @@ func spawn_enemies():
 			var instance = type.instantiate() as Cell
 			var x = randf_range(top_left.global_position.x, bottom_right.global_position.x)
 			var y = randf_range(bottom_right.global_position.y, top_left.global_position.y)
-			var growth = randi_range(data.min_size, data.max_size)
+			var growth = randi_range(data.min_size, data.max_size) - 1
 			
 			instance.global_position = Vector2(x, y)
 			get_tree().current_scene.add_child(instance)
-			instance.scale = instance.start_scale + (Vector2(growth, growth) * instance.growth_rate)
+		

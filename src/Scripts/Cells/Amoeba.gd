@@ -29,10 +29,6 @@ var rotate_tween : Tween
 
 func _ready() -> void:
 	start_speed = speed 
-	start_scale = scale
-	start_zoom = camera.zoom
-	scale = start_scale + (growth.get_vector() * scale_growth_rate)
-	camera.zoom = (start_zoom - (growth.get_vector() * cam_growth_rate)).clamp(Vector2(min, min), Vector2.ONE)
 	Global.player = self
 	ability.entity = self
 	Global.grow.emit.call_deferred(growth.value)
@@ -96,8 +92,9 @@ func grow(amount):
 	Global.grow.emit(growth.value)
 	
 	#Calculate new scale
-	var new_scale = start_scale + (growth.get_vector() * scale_growth_rate)
-	var new_zoom = (start_zoom - (growth.get_vector() * cam_growth_rate)).clamp(Vector2(min, min), Vector2.ONE)
+	var new_scale = scale + Vector2(scale_growth_rate, scale_growth_rate)
+	var factor = 0.01 if camera.zoom <= Vector2(0.75, 0.75) else 0.1
+	var new_zoom = (camera.zoom - Vector2(factor, factor)).clamp(Vector2(min, min), Vector2.ONE)
 
 	#Procedurally animate the scale of the player and the zoom of the camera to new sizes
 	scale_tween = create_tween()

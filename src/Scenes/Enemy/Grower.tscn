@@ -4,10 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://c815m60eg7fxm" path="res://src/Scenes/Components/GrowthTimer.tscn" id="2_c71ae"]
 
 [node name="Grower" instance=ExtResource("1_enx3a")]
-scale = Vector2(0.25, 0.25)
-
-[node name="Hurtbox" parent="." index="3"]
-monitorable = true
 
 [node name="GrowthTimer" parent="." index="4" instance=ExtResource("2_c71ae")]
 one_shot = true

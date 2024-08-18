@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://swkgx2pi0q3d" path="res://src/Scenes/Abilities/BoostAbility.tscn" id="7_ydkoi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ul07s"]
-size = Vector2(40, 38)
+size = Vector2(32, 32)
 
 [sub_resource type="Animation" id="Animation_1pqbn"]
 length = 0.001
@@ -23,7 +23,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.25, 0.25)]
+"values": [Vector2(0.154229, 0.147619)]
 }
 
 [sub_resource type="Animation" id="Animation_hxeeq"]
@@ -40,7 +40,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.233333, 0.5),
 "transitions": PackedFloat32Array(1, 2.2974, 1),
 "update": 0,
-"values": [Vector2(0.25, 0.25), Vector2(0.275, 0.2), Vector2(0.25, 0.25)]
+"values": [Vector2(0.154, 0.148), Vector2(0.204, 0.098), Vector2(0.154, 0.148)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_13a7h"]
@@ -53,12 +53,12 @@ _data = {
 collision_mask = 16
 script = ExtResource("1_3xfsd")
 cam_growth_rate = 0.005
-scale_growth_rate = 0.075
+scale_growth_rate = 0.5
 ability = NodePath("Abilities/BoostAbility")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(0, -2.38419e-07)
-scale = Vector2(0.25, 0.25)
+position = Vector2(0.500001, 0.5)
+scale = Vector2(0.154229, 0.147619)
 texture = ExtResource("2_y6pxa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -88,9 +88,6 @@ collision_layer = 4
 collision_mask = 8
 growth = NodePath("../Growth")
 invincibility = NodePath("../Invincibility")
-
-[node name="CollisionShape2D" parent="Hurtbox" index="0"]
-position = Vector2(0, -1)
 
 [node name="Abilities" type="Node2D" parent="."]
 

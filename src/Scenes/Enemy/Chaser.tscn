@@ -1,15 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://5iaqrrp5m1ar"]
+[gd_scene load_steps=6 format=3 uid="uid://5iaqrrp5m1ar"]
 
 [ext_resource type="PackedScene" uid="uid://bqdpfstiq5rfb" path="res://src/Scenes/Enemy/Cell.tscn" id="1_fb81a"]
-[ext_resource type="Script" path="res://src/Scripts/Cells/Watcher.gd" id="2_xkoax"]
 [ext_resource type="PackedScene" uid="uid://bg573txp5myv0" path="res://src/Scenes/Components/Sight.tscn" id="3_6v82l"]
 [ext_resource type="PackedScene" uid="uid://b2ks2vr8d0vqd" path="res://src/Scenes/States/State.tscn" id="3_tb2ki"]
 [ext_resource type="Script" path="res://src/Scripts/Effects/Effect.gd" id="4_hgosk"]
 [ext_resource type="Script" path="res://src/Scripts/States/AttackingState.gd" id="4_mjn46"]
 
 [node name="Chaser" instance=ExtResource("1_fb81a")]
-scale = Vector2(0.5, 0.5)
-script = ExtResource("2_xkoax")
 
 [node name="Sight" parent="." index="2" node_paths=PackedStringArray("entity", "state_machine") instance=ExtResource("3_6v82l")]
 visible = false
