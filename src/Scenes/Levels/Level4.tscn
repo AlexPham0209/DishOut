@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c8xs2irh3asdx"]
+[gd_scene load_steps=13 format=3 uid="uid://c8xs2irh3asdx"]
 
 [ext_resource type="PackedScene" uid="uid://dvt6tmyt3u46e" path="res://src/Scenes/Levels/Level.tscn" id="1_koo6c"]
 [ext_resource type="Script" path="res://src/Scripts/LevelGeneration/SpawnData.gd" id="2_q63fv"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://svqfj24tt0ep" path="res://src/Scenes/Enemy/Grower.tscn" id="4_y65ho"]
 [ext_resource type="PackedScene" uid="uid://cho6hfuheh6n0" path="res://src/Scenes/Enemy/Poisoner.tscn" id="5_2mtjl"]
 [ext_resource type="PackedScene" uid="uid://uv30qc2qalff" path="res://src/Scenes/Enemy/Splitter.tscn" id="6_1q7yh"]
+[ext_resource type="Texture2D" uid="uid://c8022nv1f3loo" path="res://icon.png" id="7_s0rqh"]
 
 [sub_resource type="Resource" id="Resource_vr333"]
 script = ExtResource("2_q63fv")
@@ -49,6 +50,11 @@ margin = Vector2(128, 128)
 
 [node name="Poisoner" parent="." index="8" instance=ExtResource("5_2mtjl")]
 position = Vector2(1126, 541)
+
+[node name="Icon" parent="Poisoner" index="0"]
+position = Vector2(0, 1.43051e-06)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_s0rqh")
 
 [editable path="Amoeba"]
 [editable path="Amoeba/Hurtbox"]

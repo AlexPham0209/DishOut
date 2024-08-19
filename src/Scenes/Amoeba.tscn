@@ -58,6 +58,7 @@ ability = NodePath("Abilities/BoostAbility")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0.500001, 0.5)
+rotation = 0.00108935
 scale = Vector2(0.154229, 0.147619)
 texture = ExtResource("2_y6pxa")
 

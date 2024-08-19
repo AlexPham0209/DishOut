@@ -54,4 +54,5 @@ func set_amount_left(value):
 	
 
 func finish_level():
-	get_tree().change_scene_to_packed(next_level)
+	if next_level != null:
+		get_tree().change_scene_to_packed(next_level)

@@ -1,9 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://bqdpfstiq5rfb"]
+[gd_scene load_steps=17 format=3 uid="uid://bqdpfstiq5rfb"]
 
 [ext_resource type="Script" path="res://src/Scripts/Cells/Cell.gd" id="1_rcpp6"]
-[ext_resource type="Texture2D" uid="uid://c8022nv1f3loo" path="res://icon.png" id="2_qj6me"]
 [ext_resource type="Script" path="res://src/Scripts/Components/Growth.gd" id="3_0pkhx"]
+[ext_resource type="Texture2D" uid="uid://bnm5nfcyoceup" path="res://src/Assets/Art/Cells/En_2.png" id="3_7lug2"]
+[ext_resource type="Texture2D" uid="uid://ck5x256t5a01f" path="res://src/Assets/Art/Cells/En_1.png" id="3_c6oby"]
 [ext_resource type="PackedScene" uid="uid://cd1ne1rmx77gt" path="res://src/Scenes/States/StateMachine.tscn" id="3_whqsm"]
+[ext_resource type="Texture2D" uid="uid://bqdp1wpfvwnyf" path="res://src/Assets/Art/Cells/En_3.png" id="4_crki8"]
 [ext_resource type="Script" path="res://src/Scripts/States/StateMachine.gd" id="4_io8qd"]
 [ext_resource type="PackedScene" uid="uid://tv55ugnq6ijl" path="res://src/Scenes/Components/Invincibility.tscn" id="4_ywib0"]
 [ext_resource type="PackedScene" uid="uid://dsua2mr50l6wm" path="res://src/Scenes/Components/Hurtbox.tscn" id="5_ek4bs"]
@@ -23,9 +25,28 @@ collision_mask = 16
 script = ExtResource("1_rcpp6")
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(0, 1.43051e-06)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_qj6me")
+position = Vector2(-1.07288e-06, -9.53674e-07)
+scale = Vector2(0.301887, 0.333333)
+texture = ExtResource("3_c6oby")
+
+[node name="Stages" type="Node2D" parent="."]
+
+[node name="Stage1" type="Sprite2D" parent="Stages"]
+visible = false
+scale = Vector2(0.301887, 0.333333)
+texture = ExtResource("3_c6oby")
+
+[node name="Stage2" type="Sprite2D" parent="Stages"]
+visible = false
+position = Vector2(1.17534e-06, 0)
+scale = Vector2(0.172973, 0.177778)
+texture = ExtResource("3_7lug2")
+
+[node name="Stage3" type="Sprite2D" parent="Stages"]
+visible = false
+position = Vector2(-2.38419e-06, 3.99351e-06)
+scale = Vector2(0.132231, 0.120755)
+texture = ExtResource("4_crki8")
 
 [node name="Growth" type="Node2D" parent="."]
 script = ExtResource("3_0pkhx")

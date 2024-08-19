@@ -64,7 +64,7 @@ blood = ExtResource("14_o1kev")
 [node name="Fleeing" type="Node2D" parent="States" node_paths=PackedStringArray("sprite")]
 script = ExtResource("2_wbhrk")
 sprite = NodePath("../../Icon")
-chase_speed = 150.0
+chase_speed = 250.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hlr45")

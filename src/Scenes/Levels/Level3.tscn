@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://7k5nu5ldurte"]
+[gd_scene load_steps=15 format=3 uid="uid://7k5nu5ldurte"]
 
 [ext_resource type="PackedScene" uid="uid://dvt6tmyt3u46e" path="res://src/Scenes/Levels/Level.tscn" id="1_svtyb"]
 [ext_resource type="Script" path="res://src/Scripts/LevelGeneration/SpawnData.gd" id="2_8dhm1"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://uv30qc2qalff" path="res://src/Scenes/Enemy/Splitter.tscn" id="5_6au43"]
 [ext_resource type="PackedScene" uid="uid://svqfj24tt0ep" path="res://src/Scenes/Enemy/Grower.tscn" id="6_pm8vb"]
 [ext_resource type="PackedScene" uid="uid://c8xs2irh3asdx" path="res://src/Scenes/Levels/Level4.tscn" id="7_owgje"]
+[ext_resource type="Texture2D" uid="uid://c8022nv1f3loo" path="res://icon.png" id="8_6nbw8"]
 
 [sub_resource type="Resource" id="Resource_5y733"]
 script = ExtResource("2_8dhm1")
@@ -59,7 +60,12 @@ margin = Vector2(64, 64)
 [node name="Grower" parent="Enemies" index="0" instance=ExtResource("6_pm8vb")]
 position = Vector2(1226, 567)
 
-[node name="Growth" parent="Enemies/Grower" index="1"]
+[node name="Icon" parent="Enemies/Grower" index="0"]
+position = Vector2(0, 1.43051e-06)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_6nbw8")
+
+[node name="Growth" parent="Enemies/Grower" index="2"]
 value = 3
 
 [editable path="Enemies/Grower"]

@@ -25,19 +25,19 @@ amount = 15
 spawns = Array[ExtResource("2_wki27")]([SubResource("Resource_0lobg"), SubResource("Resource_pi8i7")])
 next_level = ExtResource("5_vvvou")
 
-[node name="Growth" parent="Amoeba" index="4"]
-value = 1
+[node name="Amoeba" parent="." index="5"]
+position = Vector2(974, 1047)
 
-[node name="Marker2D12" type="Marker2D" parent="SpawnPoints" index="4"]
+[node name="Marker2D19" type="Marker2D" parent="SpawnPoints" index="4"]
 position = Vector2(594, 642)
 
-[node name="Marker2D14" type="Marker2D" parent="SpawnPoints" index="6"]
+[node name="Marker2D20" type="Marker2D" parent="SpawnPoints" index="6"]
 position = Vector2(1143, 685)
 
-[node name="Marker2D15" type="Marker2D" parent="SpawnPoints" index="7"]
+[node name="Marker2D21" type="Marker2D" parent="SpawnPoints" index="7"]
 position = Vector2(732, 391)
 
-[node name="Marker2D13" type="Marker2D" parent="SpawnPoints" index="13"]
+[node name="Marker2D22" type="Marker2D" parent="SpawnPoints" index="13"]
 position = Vector2(1143, 239)
 
 [editable path="Amoeba"]

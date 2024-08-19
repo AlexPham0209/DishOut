@@ -1,0 +1,216 @@
+[gd_scene load_steps=12 format=3 uid="uid://b2cnwa7jr7ggm"]
+
+[ext_resource type="Script" path="res://src/Scripts/Cutscene.gd" id="1_kec20"]
+[ext_resource type="Script" path="res://src/Scripts/Dialogue.gd" id="2_u601u"]
+[ext_resource type="PackedScene" uid="uid://chqewscxs0qop" path="res://src/Scenes/Cutscenes/Textbox.tscn" id="3_mqhj5"]
+[ext_resource type="Texture2D" uid="uid://c8022nv1f3loo" path="res://icon.png" id="4_giu4u"]
+
+[sub_resource type="Animation" id="Animation_c2wcr"]
+resource_name = "Explaining"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Dialogue/TextBox")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["He jumps up and down"],
+"method": &"set_text"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_rwo05"]
+resource_name = "Exposition"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Dialogue/TextBox")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["He came from the left"],
+"method": &"set_text"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_xok7p"]
+resource_name = "Jump"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 2.23333),
+"transitions": PackedFloat32Array(0.217638, 0.239876, 1.31951),
+"update": 0,
+"values": [Vector2(530, 179), Vector2(533, 69), Vector2(530, 179)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_next"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_vrvw3"]
+resource_name = "ManWalking"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-152, 179), Vector2(530, 179)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_next"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_w5cpt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-152, 179)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Dialogue/TextBox:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_6aici"]
+resource_name = "Start"
+length = 5.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Dialogue/TextBox/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Fade", -1],
+"method": &"play_backwards"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Dialogue/TextBox")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["There once was a guy from PA"],
+"method": &"set_text"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Dialogue/TextBox:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.06667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c85hf"]
+_data = {
+"Explaining": SubResource("Animation_c2wcr"),
+"Exposition": SubResource("Animation_rwo05"),
+"Jump": SubResource("Animation_xok7p"),
+"ManWalking": SubResource("Animation_vrvw3"),
+"RESET": SubResource("Animation_w5cpt"),
+"Start": SubResource("Animation_6aici")
+}
+
+[node name="TestCutscene" type="Node2D"]
+position = Vector2(16, 0)
+script = ExtResource("1_kec20")
+events = Array[String](["Start", "Exposition", "ManWalking", "Explaining", "Jump"])
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Dialogue" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+script = ExtResource("2_u601u")
+
+[node name="TextBox" parent="CanvasLayer/Dialogue" instance=ExtResource("3_mqhj5")]
+visible = false
+offset_left = 41.0
+offset_top = 245.0
+offset_right = 593.0
+offset_bottom = 357.0
+frequency = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_c85hf")
+}
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(-152, 179)
+texture = ExtResource("4_giu4u")
+
+[connection signal="pressed" from="CanvasLayer/Dialogue/TextBox/Button" to="." method="play_next"]
+
+[editable path="CanvasLayer/Dialogue/TextBox"]

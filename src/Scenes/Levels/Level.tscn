@@ -102,7 +102,7 @@ offset_bottom = 40.0
 gizmo_extents = 30.0
 
 [node name="BottomRight" type="Marker2D" parent="Limits"]
-position = Vector2(2048, 1024)
+position = Vector2(2048, 2048)
 gizmo_extents = 30.0
 
 [node name="Amoeba" parent="." instance=ExtResource("9_gyysq")]
@@ -110,12 +110,12 @@ position = Vector2(974, 535)
 cam_growth_rate = 0.05
 
 [node name="Growth" parent="Amoeba" index="4"]
-value = 3
+value = 1
 
 [node name="SpawnPoints" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(233, 139)
+position = Vector2(292, 1469)
 
 [node name="Marker2D2" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(461, 471)
@@ -146,6 +146,27 @@ position = Vector2(819, 40)
 
 [node name="Marker2D11" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(203, 900)
+
+[node name="Marker2D12" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1880, 1391)
+
+[node name="Marker2D18" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(561, 1274)
+
+[node name="Marker2D17" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1464, 1274)
+
+[node name="Marker2D16" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(974, 1872)
+
+[node name="Marker2D15" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1618, 1872)
+
+[node name="Marker2D14" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(203, 1872)
+
+[node name="Marker2D13" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1117, 1551)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 

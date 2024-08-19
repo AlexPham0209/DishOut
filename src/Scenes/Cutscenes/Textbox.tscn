@@ -1,0 +1,116 @@
+[gd_scene load_steps=8 format=3 uid="uid://chqewscxs0qop"]
+
+[ext_resource type="Texture2D" uid="uid://wcds6ku2fhvr" path="res://src/Assets/Art/DialogueBox/Outline.png" id="1_0e0d1"]
+[ext_resource type="Script" path="res://src/Scripts/TextBox.gd" id="1_dyaof"]
+[ext_resource type="Script" path="res://src/Scripts/Button.gd" id="3_ahctk"]
+
+[sub_resource type="Animation" id="Animation_ccbkw"]
+resource_name = "Fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.729412), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Text:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c174c"]
+resource_name = "OpenBox"
+
+[sub_resource type="Animation" id="Animation_g3sdi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.729412)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Text:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_os3ou"]
+_data = {
+"Fade": SubResource("Animation_ccbkw"),
+"OpenBox": SubResource("Animation_c174c"),
+"RESET": SubResource("Animation_g3sdi")
+}
+
+[node name="TextBox" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 552.0
+offset_bottom = 112.0
+script = ExtResource("1_dyaof")
+frequency = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+modulate = Color(1, 1, 1, 0.729412)
+layout_mode = 0
+offset_right = 2208.0
+offset_bottom = 448.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_0e0d1")
+patch_margin_left = 144
+patch_margin_top = 144
+patch_margin_right = 144
+patch_margin_bottom = 144
+
+[node name="Text" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 536.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "
+"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_os3ou")
+}
+
+[node name="Button" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 432.0
+offset_top = 64.0
+offset_right = 527.0
+offset_bottom = 95.0
+text = "Continue"
+script = ExtResource("3_ahctk")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
