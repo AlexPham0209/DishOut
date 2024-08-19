@@ -13,3 +13,15 @@ res://src/Scenes/Cutscenes/TestCutscene.tscn
 res://src/Scenes/Enemy/Fleer.tscn
 res://src/Scenes/Levels/Level.tscn
 res://src/Scenes/Levels/Level2.tscn
+res://src/Scenes/Enemy/Chaser.tscn
+res://src/Scenes/Enemy/Cell.tscn
+res://src/Scripts/Cells/Stages.gd
+res://src/Scripts/Cells/Stage.gd
+res://src/Scripts/Cells/Cell.gd
+res://src/Scripts/States/RoamingState.gd
+res://src/Scripts/States/AttackingState.gd
+res://src/Scripts/States/FleeingState.gd
+res://src/Scenes/Enemy/Grower.tscn
+res://src/Scenes/Enemy/Spawner.tscn
+res://src/Scenes/Enemy/Poisoner.tscn
+res://src/Scenes/Enemy/Stages.tscn

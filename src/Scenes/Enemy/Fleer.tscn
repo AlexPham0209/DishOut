@@ -1,10 +1,10 @@
 [gd_scene load_steps=17 format=3 uid="uid://dcwe2fhdssqod"]
 
 [ext_resource type="Script" path="res://src/Scripts/Cells/Cell.gd" id="1_lrv80"]
-[ext_resource type="Texture2D" uid="uid://ck5x256t5a01f" path="res://src/Assets/Art/Cells/En_1.png" id="2_8dbb2"]
 [ext_resource type="PackedScene" uid="uid://bg573txp5myv0" path="res://src/Scenes/Components/Sight.tscn" id="2_36aop"]
 [ext_resource type="Script" path="res://src/Scripts/States/FleeingState.gd" id="2_wbhrk"]
 [ext_resource type="Script" path="res://src/Scripts/Components/Growth.gd" id="3_3ruk3"]
+[ext_resource type="PackedScene" uid="uid://d255ivv63cepv" path="res://src/Scenes/Enemy/Stages.tscn" id="3_kg3iv"]
 [ext_resource type="PackedScene" uid="uid://tv55ugnq6ijl" path="res://src/Scenes/Components/Invincibility.tscn" id="5_5rcwy"]
 [ext_resource type="PackedScene" uid="uid://dsua2mr50l6wm" path="res://src/Scenes/Components/Hurtbox.tscn" id="6_jxokt"]
 [ext_resource type="PackedScene" uid="uid://cd1ne1rmx77gt" path="res://src/Scenes/States/StateMachine.tscn" id="7_b3bbr"]
@@ -24,13 +24,10 @@ collision_layer = 2
 collision_mask = 16
 script = ExtResource("1_lrv80")
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(4.76837e-07, 7.15256e-07)
-scale = Vector2(0.301887, 0.333333)
-texture = ExtResource("2_8dbb2")
-
 [node name="Growth" type="Node2D" parent="."]
 script = ExtResource("3_3ruk3")
+
+[node name="Stages" parent="." instance=ExtResource("3_kg3iv")]
 
 [node name="Sight" parent="." node_paths=PackedStringArray("entity", "state_machine") instance=ExtResource("2_36aop")]
 scale = Vector2(4, 4)
@@ -49,9 +46,9 @@ script = ExtResource("8_scf5a")
 initial_state = "Roaming"
 entity = NodePath("..")
 
-[node name="Roaming" parent="States" node_paths=PackedStringArray("sprite") instance=ExtResource("9_ts0pk")]
+[node name="Roaming" parent="States" node_paths=PackedStringArray("stages") instance=ExtResource("9_ts0pk")]
 script = ExtResource("10_a2ke7")
-sprite = NodePath("../../Icon")
+stages = NodePath("../../Stages")
 distance = 64
 tolerance = 0.5
 speed = 50.0
@@ -61,10 +58,10 @@ script = ExtResource("11_1v83w")
 effects = Array[ExtResource("12_0jxfq")]([ExtResource("13_8hkgm")])
 blood = ExtResource("14_o1kev")
 
-[node name="Fleeing" type="Node2D" parent="States" node_paths=PackedStringArray("sprite")]
+[node name="Fleeing" type="Node2D" parent="States" node_paths=PackedStringArray("stages")]
 script = ExtResource("2_wbhrk")
-sprite = NodePath("../../Icon")
-chase_speed = 250.0
+stages = NodePath("../../Stages")
+chase_speed = 350.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hlr45")

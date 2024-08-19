@@ -3,7 +3,7 @@ extends State
 
 var target_position : Vector2
 
-@export var sprite : Sprite2D
+@export var stages : Stages
 @export var distance = 64
 @export var tolerance : float = 0.5
 @export var speed : float = 50
@@ -15,7 +15,7 @@ func physics_update(delta):
 	var e = entity as Cell
 	var direction : Vector2 = (target_position - e.global_position).normalized()
 	e.velocity = direction * speed
-	sprite.flip_v = direction.angle() >= PI
+	stages.sprite.flip_v = direction.angle() >= PI
 	e.rotation = direction.angle()
 	
 	#Find new target to follow

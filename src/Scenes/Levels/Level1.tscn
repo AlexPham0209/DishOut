@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://8syuojrdilr3"]
+[gd_scene load_steps=9 format=3 uid="uid://8syuojrdilr3"]
 
 [ext_resource type="PackedScene" uid="uid://dvt6tmyt3u46e" path="res://src/Scenes/Levels/Level.tscn" id="1_fn4pg"]
 [ext_resource type="Script" path="res://src/Scripts/LevelGeneration/SpawnData.gd" id="2_wki27"]
 [ext_resource type="PackedScene" uid="uid://dcwe2fhdssqod" path="res://src/Scenes/Enemy/Fleer.tscn" id="3_owmdx"]
 [ext_resource type="PackedScene" uid="uid://5iaqrrp5m1ar" path="res://src/Scenes/Enemy/Chaser.tscn" id="4_mvqcm"]
 [ext_resource type="PackedScene" uid="uid://c8lqggvyggc5y" path="res://src/Scenes/Levels/Level2.tscn" id="5_vvvou"]
+[ext_resource type="PackedScene" uid="uid://bqdpfstiq5rfb" path="res://src/Scenes/Enemy/Cell.tscn" id="6_16v63"]
 
 [sub_resource type="Resource" id="Resource_0lobg"]
 script = ExtResource("2_wki27")
@@ -39,6 +40,9 @@ position = Vector2(732, 391)
 
 [node name="Marker2D22" type="Marker2D" parent="SpawnPoints" index="13"]
 position = Vector2(1143, 239)
+
+[node name="Cell" parent="." index="8" instance=ExtResource("6_16v63")]
+position = Vector2(1096, 1030)
 
 [editable path="Amoeba"]
 [editable path="Amoeba/Hurtbox"]

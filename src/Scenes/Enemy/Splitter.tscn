@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://src/Scripts/Cells/Cell.gd" id="1_4cc73"]
 [ext_resource type="PackedScene" uid="uid://bg573txp5myv0" path="res://src/Scenes/Components/Sight.tscn" id="2_0njqb"]
-[ext_resource type="Texture2D" uid="uid://c8022nv1f3loo" path="res://icon.png" id="2_kpabg"]
 [ext_resource type="Script" path="res://src/Scripts/States/SplitState.gd" id="3_1lm38"]
 [ext_resource type="Script" path="res://src/Scripts/Components/Growth.gd" id="3_2uyyn"]
 [ext_resource type="PackedScene" uid="uid://dcwe2fhdssqod" path="res://src/Scenes/Enemy/Fleer.tscn" id="4_ermjx"]
+[ext_resource type="PackedScene" uid="uid://d255ivv63cepv" path="res://src/Scenes/Enemy/Stages.tscn" id="4_jihsv"]
 [ext_resource type="PackedScene" uid="uid://tv55ugnq6ijl" path="res://src/Scenes/Components/Invincibility.tscn" id="5_36g21"]
 [ext_resource type="Script" path="res://src/Scripts/States/FleeingState.gd" id="5_p07c6"]
 [ext_resource type="PackedScene" uid="uid://dsua2mr50l6wm" path="res://src/Scenes/Components/Hurtbox.tscn" id="6_turbx"]
@@ -24,13 +24,10 @@ script = ExtResource("1_4cc73")
 death_state = "Split"
 growth_rate = 0.05
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(0, 1.43051e-06)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_kpabg")
-
 [node name="Growth" type="Node2D" parent="."]
 script = ExtResource("3_2uyyn")
+
+[node name="Stages" parent="." instance=ExtResource("4_jihsv")]
 
 [node name="Sight" parent="." node_paths=PackedStringArray("entity", "state_machine") instance=ExtResource("2_0njqb")]
 entity = NodePath("..")
@@ -48,9 +45,9 @@ script = ExtResource("8_imgqp")
 initial_state = "Roaming"
 entity = NodePath("..")
 
-[node name="Roaming" parent="States" node_paths=PackedStringArray("sprite") instance=ExtResource("9_ljqtn")]
+[node name="Roaming" parent="States" node_paths=PackedStringArray("stages") instance=ExtResource("9_ljqtn")]
 script = ExtResource("10_h02to")
-sprite = NodePath("../../Icon")
+stages = NodePath("../../Stages")
 distance = 64
 tolerance = 0.5
 speed = 50.0
@@ -61,9 +58,9 @@ amount = 4
 enemy = ExtResource("4_ermjx")
 distance = 32
 
-[node name="Fleeing" type="Node2D" parent="States" node_paths=PackedStringArray("sprite")]
+[node name="Fleeing" type="Node2D" parent="States" node_paths=PackedStringArray("stages")]
 script = ExtResource("5_p07c6")
-sprite = NodePath("../../Icon")
+stages = NodePath("../../Stages")
 chase_speed = 150.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -23,9 +23,9 @@ visible = true
 [node name="Death" parent="States" index="1"]
 effects = Array[ExtResource("4_hgosk")]([])
 
-[node name="Attacking" parent="States" index="2" node_paths=PackedStringArray("sprite") instance=ExtResource("3_tb2ki")]
+[node name="Attacking" parent="States" index="2" node_paths=PackedStringArray("stages") instance=ExtResource("3_tb2ki")]
 script = ExtResource("4_mjn46")
 chase_speed = 300.0
-sprite = NodePath("../../Icon")
+stages = NodePath("../../Stages")
 
 [editable path="Sight"]

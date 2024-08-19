@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @export var margin : Vector2 = Vector2(0.25, 0.25)
 @onready var state_machine : StateMachine = $States
-@onready var sprite : Sprite2D = $Icon
+@onready var stages : Stages = $Stages
 @onready var growth = $Growth
 @onready var invincibility : Invincibility = $Invincibility
 @export var death_state : String = "Death"
@@ -14,8 +14,8 @@ var playing : bool = false
 var scale_tween : Tween
 var start_scale : Vector2
 
-var min : int
-var max : int
+@export var min : int
+@export var max : int
 
 signal eaten
 
@@ -23,6 +23,7 @@ func _ready() -> void:
 	start_scale = self.scale
 	growth.value = randi_range(min, max)
 	self.scale = start_scale + (Vector2(growth_rate, growth_rate) * growth.value)
+	stages.choose_level.call_deferred(growth.value)
 
 func _process(delta: float) -> void:
 	if velocity != Vector2.ZERO:
@@ -38,6 +39,7 @@ func walk_animation():
 	
 	playing = true
 	walk_tween = create_tween()
+	var sprite = stages.sprite
 	var start = sprite.scale
 	var stretched = sprite.scale + Vector2(0.1, -0.1)
 	walk_tween.tween_property(sprite, "scale", stretched, 0.5).set_ease(Tween.EASE_IN_OUT) \

@@ -1,3 +1,5 @@
+res://src/Scenes/Enemy
+res://src/Scripts/Cells
 res://src/Scripts
 res://src/Scenes/Cutscenes
 res://src/Scenes/Levels
@@ -12,7 +14,6 @@ res://src/Scripts/Abilities
 res://src/Scenes/Components
 res://src/Scripts/Components
 res://src/Scenes
-res://src/Scenes/Enemy
 res://src/Scripts/States
 res://src/Scripts/Effects
 res://src/Singleton
