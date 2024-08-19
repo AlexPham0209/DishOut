@@ -1,9 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://svqfj24tt0ep"]
+[gd_scene load_steps=5 format=3 uid="uid://svqfj24tt0ep"]
 
 [ext_resource type="PackedScene" uid="uid://bqdpfstiq5rfb" path="res://src/Scenes/Enemy/Cell.tscn" id="1_enx3a"]
 [ext_resource type="PackedScene" uid="uid://c815m60eg7fxm" path="res://src/Scenes/Components/GrowthTimer.tscn" id="2_c71ae"]
 
+[sub_resource type="Gradient" id="Gradient_3qa31"]
+offsets = PackedFloat32Array(0, 0.455446, 0.688119, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1.13107e-06, 0.612621, 0.165135, 1, 0, 0.611765, 0.164706, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bar1e"]
+gradient = SubResource("Gradient_3qa31")
+
 [node name="Grower" instance=ExtResource("1_enx3a")]
+
+[node name="Stages" parent="." index="0"]
+palette = SubResource("GradientTexture1D_bar1e")
 
 [node name="GrowthTimer" parent="." index="4" instance=ExtResource("2_c71ae")]
 wait_time = 5.0

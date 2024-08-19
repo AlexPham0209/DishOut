@@ -32,6 +32,7 @@ script = ExtResource("3_0pkhx")
 [node name="Invincibility" parent="." instance=ExtResource("4_ywib0")]
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("growth", "invincibility") instance=ExtResource("5_ek4bs")]
+visible = false
 growth = NodePath("../Growth")
 invincibility = NodePath("../Invincibility")
 
@@ -53,6 +54,7 @@ effects = Array[ExtResource("8_phfqo")]([ExtResource("9_1jlkj")])
 blood = ExtResource("10_vp6py")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_hlr45")
 
 [connection signal="take_damage" from="Hurtbox" to="." method="damage"]

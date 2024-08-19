@@ -1,12 +1,50 @@
-[gd_scene load_steps=6 format=3 uid="uid://5iaqrrp5m1ar"]
+[gd_scene load_steps=12 format=3 uid="uid://5iaqrrp5m1ar"]
 
 [ext_resource type="PackedScene" uid="uid://bqdpfstiq5rfb" path="res://src/Scenes/Enemy/Cell.tscn" id="1_fb81a"]
+[ext_resource type="Shader" path="res://src/Scenes/Enemy/PaletteShader.gdshader" id="2_s0gok"]
 [ext_resource type="PackedScene" uid="uid://bg573txp5myv0" path="res://src/Scenes/Components/Sight.tscn" id="3_6v82l"]
 [ext_resource type="PackedScene" uid="uid://b2ks2vr8d0vqd" path="res://src/Scenes/States/State.tscn" id="3_tb2ki"]
 [ext_resource type="Script" path="res://src/Scripts/Effects/Effect.gd" id="4_hgosk"]
 [ext_resource type="Script" path="res://src/Scripts/States/AttackingState.gd" id="4_mjn46"]
 
+[sub_resource type="Gradient" id="Gradient_i4b0m"]
+offsets = PackedFloat32Array(0, 0.430693, 0.69802, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.713223, 0.114376, 0.290217, 1, 0.713726, 0.113725, 0.290196, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rdg6y"]
+gradient = SubResource("Gradient_i4b0m")
+
+[sub_resource type="Gradient" id="Gradient_gul1i"]
+offsets = PackedFloat32Array(0, 0.011236, 0.595506, 0.837079)
+colors = PackedColorArray(0.000693898, 0.000693898, 0.000693898, 1, 0.0674157, 0.0674157, 0.0674157, 1, 0.803581, 0.164066, 0.461142, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6igwt"]
+gradient = SubResource("Gradient_gul1i")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wdk4m"]
+resource_local_to_scene = true
+shader = ExtResource("2_s0gok")
+shader_parameter/gradient = SubResource("GradientTexture1D_6igwt")
+
 [node name="Chaser" instance=ExtResource("1_fb81a")]
+
+[node name="Stages" parent="." index="0"]
+palette = SubResource("GradientTexture1D_rdg6y")
+
+[node name="Stage1" parent="Stages" index="0"]
+material = SubResource("ShaderMaterial_wdk4m")
+
+[node name="Stage2" parent="Stages" index="1"]
+material = SubResource("ShaderMaterial_wdk4m")
+
+[node name="Stage3" parent="Stages" index="2"]
+material = SubResource("ShaderMaterial_wdk4m")
+
+[node name="Stage4" parent="Stages" index="3"]
+material = SubResource("ShaderMaterial_wdk4m")
+
+[node name="Stage5" parent="Stages" index="4"]
+material = SubResource("ShaderMaterial_wdk4m")
 
 [node name="Sight" parent="." index="2" node_paths=PackedStringArray("entity", "state_machine") instance=ExtResource("3_6v82l")]
 visible = false
@@ -28,4 +66,5 @@ script = ExtResource("4_mjn46")
 chase_speed = 300.0
 stages = NodePath("../../Stages")
 
+[editable path="Stages"]
 [editable path="Sight"]

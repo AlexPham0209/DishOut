@@ -12,11 +12,11 @@ var noise_i: float = 0.0
 var shake_strength: float = 0.0
 var tween : Tween 
 
-func screen_shake():
+func screen_shake(strength : float = NOISE_SHAKE_STRENGTH, time : float = time):
 	if tween:
 		tween.kill()
 	tween = create_tween()
-	tween.tween_property(self, "shake_strength", NOISE_SHAKE_STRENGTH, time).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, "shake_strength", strength, time).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(self, "shake_strength", 0, time).set_ease(Tween.EASE_IN_OUT)
 
 

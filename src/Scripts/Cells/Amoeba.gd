@@ -27,6 +27,8 @@ signal notify_cells
 var scale_tween : Tween
 var rotate_tween : Tween
 
+var blood : PackedScene = preload("res://src/Scenes/Trail/Blood.tscn")
+
 func _ready() -> void:
 	start_speed = speed 
 	start_scale = scale 
@@ -56,16 +58,16 @@ func move():
 	
 	#Add friction and acceleration
 	if direction.length() != 0:
+		if not animation_player.is_playing():
+			animation_player.play("Walk")
 		velocity.x = move_toward(velocity.x, direction.x * speed, acceleration)
 		velocity.y = move_toward(velocity.y, direction.y * speed, acceleration)
-		animation_player.play("Walk")
 		rotate_sprite(direction.angle())
 		
 	else:
 		velocity.x = move_toward(velocity.x, 0, friction)
 		animation_player.stop()
 		velocity.y = move_toward(velocity.y, 0, friction)
-
 
 func rotate_sprite(angle):
 	sprite.flip_v = angle >= PI
@@ -76,6 +78,7 @@ func rotate_sprite(angle):
 
 func damage():
 	grow(-1)
+	animation_player.play("TakeDamage")
 	
 func heal():
 	grow(1)
@@ -105,3 +108,11 @@ func grow(amount):
 		set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	scale_tween.play()
 	
+func spawn_blood():
+	print("spawn")
+	if get_tree() == null or get_tree().current_scene == null:
+		return
+		
+	var instance = blood.instantiate()
+	instance.global_position = self.global_position
+	get_tree().current_scene.add_child(instance)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dcwe2fhdssqod"]
+[gd_scene load_steps=19 format=3 uid="uid://dcwe2fhdssqod"]
 
 [ext_resource type="Script" path="res://src/Scripts/Cells/Cell.gd" id="1_lrv80"]
 [ext_resource type="PackedScene" uid="uid://bg573txp5myv0" path="res://src/Scenes/Components/Sight.tscn" id="2_36aop"]
@@ -16,6 +16,13 @@
 [ext_resource type="Resource" uid="uid://b52ef2wvfkw46" path="res://src/Resources/Effects/GrowEffect.tres" id="13_8hkgm"]
 [ext_resource type="PackedScene" uid="uid://b8yujopof8a6l" path="res://src/Scenes/Trail/Blood.tscn" id="14_o1kev"]
 
+[sub_resource type="Gradient" id="Gradient_mjklg"]
+offsets = PackedFloat32Array(0, 0.433168, 0.700495, 1)
+colors = PackedColorArray(0, 0, 0, 1, 3.94672e-06, 0.606055, 0.845705, 1, 0, 0.607843, 0.847059, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fg6fp"]
+gradient = SubResource("Gradient_mjklg")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hlr45"]
 size = Vector2(32, 32)
 
@@ -28,6 +35,7 @@ script = ExtResource("1_lrv80")
 script = ExtResource("3_3ruk3")
 
 [node name="Stages" parent="." instance=ExtResource("3_kg3iv")]
+palette = SubResource("GradientTexture1D_fg6fp")
 
 [node name="Sight" parent="." node_paths=PackedStringArray("entity", "state_machine") instance=ExtResource("2_36aop")]
 scale = Vector2(4, 4)

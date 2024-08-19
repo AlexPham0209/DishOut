@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dm1vkdbsb3nmq"]
+
+[ext_resource type="Shader" path="res://src/Scenes/Enemy/PaletteShader.gdshader" id="1_d3dwm"]
+
+[sub_resource type="Gradient" id="Gradient_gul1i"]
+offsets = PackedFloat32Array(0, 0.011236, 0.595506, 0.837079)
+colors = PackedColorArray(0.000693898, 0.000693898, 0.000693898, 1, 0.0674157, 0.0674157, 0.0674157, 1, 0.803581, 0.164066, 0.461142, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6igwt"]
+gradient = SubResource("Gradient_gul1i")
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_d3dwm")
+shader_parameter/gradient = SubResource("GradientTexture1D_6igwt")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://d255ivv63cepv"]
+[gd_scene load_steps=13 format=3 uid="uid://d255ivv63cepv"]
 
 [ext_resource type="Script" path="res://src/Scripts/Cells/Stages.gd" id="1_gnovn"]
 [ext_resource type="Script" path="res://src/Scripts/Cells/Stage.gd" id="2_jmrdr"]
 [ext_resource type="Texture2D" uid="uid://ck5x256t5a01f" path="res://src/Assets/Art/Cells/En_1.png" id="3_45iux"]
+[ext_resource type="Material" uid="uid://dm1vkdbsb3nmq" path="res://src/Shaders/PaletteMaterial.tres" id="3_qw7p0"]
 [ext_resource type="Texture2D" uid="uid://bnm5nfcyoceup" path="res://src/Assets/Art/Cells/En_2.png" id="4_1tsr3"]
 [ext_resource type="Texture2D" uid="uid://bqdp1wpfvwnyf" path="res://src/Assets/Art/Cells/En_3.png" id="5_yayd2"]
 [ext_resource type="Texture2D" uid="uid://qxaodmt4p4mh" path="res://src/Assets/Art/Cells/En_4.png" id="6_rty1j"]
@@ -38,29 +39,35 @@ sprite = NodePath("Stage1")
 stages = Array[ExtResource("2_jmrdr")]([SubResource("Resource_vitep"), SubResource("Resource_c7fsl"), SubResource("Resource_ixv61"), SubResource("Resource_ygi63")])
 
 [node name="Stage1" type="Sprite2D" parent="."]
+visible = false
+material = ExtResource("3_qw7p0")
 scale = Vector2(0.301887, 0.333333)
 texture = ExtResource("3_45iux")
 
 [node name="Stage2" type="Sprite2D" parent="."]
 visible = false
+material = ExtResource("3_qw7p0")
 position = Vector2(1.17534e-06, 0)
 scale = Vector2(0.172973, 0.177778)
 texture = ExtResource("4_1tsr3")
 
 [node name="Stage3" type="Sprite2D" parent="."]
 visible = false
+material = ExtResource("3_qw7p0")
 position = Vector2(-2.38419e-06, 3.99351e-06)
 scale = Vector2(0.132231, 0.120755)
 texture = ExtResource("5_yayd2")
 
 [node name="Stage4" type="Sprite2D" parent="."]
 visible = false
+material = ExtResource("3_qw7p0")
 position = Vector2(1.68373e-06, 0)
 scale = Vector2(0.110345, 0.0990712)
 texture = ExtResource("6_rty1j")
 
 [node name="Stage5" type="Sprite2D" parent="."]
 visible = false
+material = ExtResource("3_qw7p0")
 position = Vector2(-2.47859e-06, -2.38419e-07)
 scale = Vector2(0.0812183, 0.0826873)
 texture = ExtResource("7_bqoji")

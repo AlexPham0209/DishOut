@@ -17,6 +17,7 @@ var start_scale : Vector2
 @export var min : int
 @export var max : int
 
+
 signal eaten
 
 func _ready() -> void:
@@ -58,7 +59,7 @@ func damage():
 func grow(amount):
 	#Once reached max growth, then go to the next level
 	growth.value += amount
-
+	
 	#Calculate new scale
 	var new_scale = start_scale + (Vector2(growth_rate, growth_rate) * growth.value)
 	#Procedurally animate the scale of the player and the zoom of the camera to new sizes
@@ -66,4 +67,5 @@ func grow(amount):
 	scale_tween.tween_property(self, "scale", new_scale, 1.0). \
 		set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	scale_tween.play()
-	
+	await scale_tween.finished
+	stages.choose_level.call_deferred(growth.value)
