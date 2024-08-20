@@ -17,12 +17,17 @@ var amount_left : int :
 @onready var spawn_points = $SpawnPoints
 @onready var top_left : Marker2D = $Limits/TopLeft
 @onready var bottom_right : Marker2D = $Limits/BottomRight
+var next_level_screen = preload("res://src/Scenes/NextLevelScreen.tscn") 
+var game_over_screen = preload("res://src/Scenes/GameOverScreen.tscn") 
 
 signal update_amount_left(value)
+signal enter_level
+signal leave_level
 
 func _ready() -> void:
 	Global.grow.connect(subtract_growth)
 	amount_left = amount
+	enter_level.emit()
 	spawn_enemies()
 
 func spawn_enemies():
@@ -52,7 +57,15 @@ func set_amount_left(value):
 		finish_level()
 		return
 	
-
 func finish_level():
 	if next_level != null:
-		get_tree().change_scene_to_packed(next_level)
+		leave_level.emit()
+
+func show_next_level_screen():
+	var instance = next_level_screen.instantiate()
+	instance.level = next_level
+	get_tree().current_scene.add_child(instance)
+
+func show_game_over_screen():
+	var instance = game_over_screen.instantiate()
+	get_tree().current_scene.add_child(instance)

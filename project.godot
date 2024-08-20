@@ -8,6 +8,11 @@
 
 config_version=5
 
+[animation]
+
+warnings/check_invalid_track_paths=false
+warnings/check_angle_interpolation_type_conflicting=false
+
 [application]
 
 config/name="GMTK Game Jam"
@@ -17,6 +22,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://src/Singleton/Global.gd"
+Transition="*res://src/Scenes/Transitions/Transition.tscn"
 
 [display]
 

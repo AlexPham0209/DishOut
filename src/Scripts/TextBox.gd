@@ -6,7 +6,7 @@ var tween : Tween
 @onready var button = $Button
 @export var frequency : int = 10
 	
-func set_text(val : String):
+func set_text(val : String, show_button : bool = true):
 	if tween:
 		tween.kill()
 	
@@ -19,5 +19,7 @@ func set_text(val : String):
 	tween.play()
 	
 	await tween.finished
-	button.visible = true
+	
+	if show_button:
+		button.visible = true
 	finished_text.emit()

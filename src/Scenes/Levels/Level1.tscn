@@ -28,6 +28,9 @@ next_level = ExtResource("5_vvvou")
 [node name="Amoeba" parent="." index="5"]
 position = Vector2(974, 1047)
 
+[node name="Camera2D" parent="." index="6"]
+position = Vector2(974, 1047)
+
 [node name="Marker2D19" type="Marker2D" parent="SpawnPoints" index="4"]
 position = Vector2(594, 642)
 
@@ -39,6 +42,10 @@ position = Vector2(732, 391)
 
 [node name="Marker2D22" type="Marker2D" parent="SpawnPoints" index="13"]
 position = Vector2(1143, 239)
+
+[connection signal="enter_level" from="." to="Camera2D" method="enter_level"]
+[connection signal="death" from="Amoeba" to="." method="show_game_over_screen"]
+[connection signal="finish_zoom_out" from="Camera2D" to="Amoeba" method="pause"]
 
 [editable path="Amoeba"]
 [editable path="Amoeba/Hurtbox"]

@@ -18,6 +18,7 @@
 size = Vector2(32, 32)
 
 [node name="Cell" type="CharacterBody2D"]
+process_mode = 1
 collision_layer = 2
 collision_mask = 16
 script = ExtResource("1_rcpp6")

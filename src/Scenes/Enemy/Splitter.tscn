@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://uv30qc2qalff"]
+[gd_scene load_steps=17 format=3 uid="uid://uv30qc2qalff"]
 
 [ext_resource type="Script" path="res://src/Scripts/Cells/Cell.gd" id="1_4cc73"]
 [ext_resource type="PackedScene" uid="uid://bg573txp5myv0" path="res://src/Scenes/Components/Sight.tscn" id="2_0njqb"]
@@ -14,10 +14,18 @@
 [ext_resource type="PackedScene" uid="uid://b2ks2vr8d0vqd" path="res://src/Scenes/States/State.tscn" id="9_ljqtn"]
 [ext_resource type="Script" path="res://src/Scripts/States/RoamingState.gd" id="10_h02to"]
 
+[sub_resource type="Gradient" id="Gradient_o5ti2"]
+offsets = PackedFloat32Array(0, 0.393564, 0.715347, 0.846535, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.72, 0.72, 0, 1, 0.721569, 0.721569, 0, 1, 0.984655, 0.962148, 0.918499, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3dn15"]
+gradient = SubResource("Gradient_o5ti2")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hlr45"]
 size = Vector2(32, 32)
 
 [node name="Splitter" type="CharacterBody2D"]
+process_mode = 1
 collision_layer = 2
 collision_mask = 16
 script = ExtResource("1_4cc73")
@@ -28,6 +36,7 @@ growth_rate = 0.05
 script = ExtResource("3_2uyyn")
 
 [node name="Stages" parent="." instance=ExtResource("4_jihsv")]
+palette = SubResource("GradientTexture1D_3dn15")
 
 [node name="Sight" parent="." node_paths=PackedStringArray("entity", "state_machine") instance=ExtResource("2_0njqb")]
 entity = NodePath("..")

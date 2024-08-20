@@ -1,9 +1,11 @@
-res://src/Scenes/TestScene
+res://src/Scripts
 res://src/Shaders
+res://src/Scenes/Transitions
+res://src/Scenes
+res://src/Scenes/Cutscenes
+res://src/Scenes/TestScene
 res://src/Scenes/Enemy
 res://src/Scripts/Cells
-res://src/Scripts
-res://src/Scenes/Cutscenes
 res://src/Scenes/Levels
 res://src/Resources/LevelGeneration
 C:/Users/RedAP/Desktop/Game Dev/Godot Project/GMTKGameJam/gmtk-game-jam/src/Scripts/Components
@@ -14,7 +16,6 @@ res://src/Scenes/Abilities
 res://src/Scripts/Abilities
 res://src/Scenes/Components
 res://src/Scripts/Components
-res://src/Scenes
 res://src/Scripts/States
 res://src/Scripts/Effects
 res://src/Singleton

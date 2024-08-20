@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var sprite : Sprite2D = $Sprite
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var growth : Growth = $Growth
-@onready var camera = $Camera2D
+@export var camera : Camera2D
 
 var start_speed : float
 var direction : Vector2
@@ -23,6 +23,7 @@ var start_zoom : Vector2
 var dashing : bool = false
 
 signal notify_cells
+signal death
 
 var scale_tween : Tween
 var rotate_tween : Tween
@@ -89,7 +90,8 @@ func grow(amount):
 	camera.screen_shake()
 	
 	if growth.value <= 0:
-		queue_free()
+		game_over()
+		return
 	
 	notify_cells.emit()
 	Global.grow.emit(amount)
@@ -104,15 +106,26 @@ func grow(amount):
 	scale_tween = create_tween()
 	scale_tween.parallel().tween_property(self, "scale", new_scale, 1.0). \
 		set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
-	scale_tween.parallel().tween_property(camera, "zoom", new_zoom.clamp(Vector2(0.25, 0.25), Vector2.ONE), 1.0). \
-		set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+		
+	if not camera.animation_player.is_playing():
+		scale_tween.parallel().tween_property(camera, "zoom", new_zoom.clamp(Vector2(0.25, 0.25), Vector2.ONE), 1.0). \
+			set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	scale_tween.play()
 	
 func spawn_blood():
-	print("spawn")
 	if get_tree() == null or get_tree().current_scene == null:
 		return
 		
 	var instance = blood.instantiate()
 	instance.global_position = self.global_position
 	get_tree().current_scene.add_child(instance)
+	get_tree().current_scene.move_child(instance, 0)
+
+func game_over():
+	spawn_blood()
+	queue_free()
+	await get_tree().create_timer(2.0)
+	death.emit()
+	
+func pause():
+	process_mode = Node.PROCESS_MODE_DISABLED
