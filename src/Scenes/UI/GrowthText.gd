@@ -10,3 +10,7 @@ func _ready() -> void:
 func change_text(amount):
 	growth += amount
 	score.text = str(growth)
+
+func set_growth(val):
+	growth = val
+	score.text = str(growth)

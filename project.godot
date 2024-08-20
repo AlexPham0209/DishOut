@@ -16,6 +16,7 @@ warnings/check_angle_interpolation_type_conflicting=false
 [application]
 
 config/name="GMTK Game Jam"
+run/main_scene="res://src/Scenes/TitleScreen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 

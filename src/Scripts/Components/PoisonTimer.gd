@@ -8,7 +8,7 @@ signal take_damage(amount)
 func _on_timeout() -> void:
 	if tick >= ticks:
 		queue_free()
-	print("timer")
+
 	tick += 1 
 	take_damage.emit(-1)
 	self.start()

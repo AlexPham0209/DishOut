@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://5iaqrrp5m1ar"]
+[gd_scene load_steps=14 format=3 uid="uid://5iaqrrp5m1ar"]
 
 [ext_resource type="PackedScene" uid="uid://bqdpfstiq5rfb" path="res://src/Scenes/Enemy/Cell.tscn" id="1_fb81a"]
 [ext_resource type="Shader" path="res://src/Scenes/Enemy/PaletteShader.gdshader" id="2_s0gok"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b2ks2vr8d0vqd" path="res://src/Scenes/States/State.tscn" id="3_tb2ki"]
 [ext_resource type="Script" path="res://src/Scripts/Effects/Effect.gd" id="4_hgosk"]
 [ext_resource type="Script" path="res://src/Scripts/States/AttackingState.gd" id="4_mjn46"]
+[ext_resource type="Script" path="res://src/Scripts/Effects/GrowEffect.gd" id="5_uu3f7"]
 
 [sub_resource type="Gradient" id="Gradient_i4b0m"]
 offsets = PackedFloat32Array(0, 0.430693, 0.69802, 1)
@@ -25,6 +26,10 @@ gradient = SubResource("Gradient_gul1i")
 resource_local_to_scene = true
 shader = ExtResource("2_s0gok")
 shader_parameter/gradient = SubResource("GradientTexture1D_6igwt")
+
+[sub_resource type="Resource" id="Resource_pdy1k"]
+script = ExtResource("5_uu3f7")
+rate = 1
 
 [node name="Chaser" instance=ExtResource("1_fb81a")]
 
@@ -59,7 +64,7 @@ visible = true
 visible = true
 
 [node name="Death" parent="States" index="1"]
-effects = Array[ExtResource("4_hgosk")]([])
+effects = Array[ExtResource("4_hgosk")]([SubResource("Resource_pdy1k")])
 
 [node name="Attacking" parent="States" index="2" node_paths=PackedStringArray("stages") instance=ExtResource("3_tb2ki")]
 script = ExtResource("4_mjn46")

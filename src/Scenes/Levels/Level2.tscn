@@ -43,10 +43,20 @@ min_size = 5
 max_size = 10
 
 [node name="Level2" instance=ExtResource("1_2x1td")]
-amount = 3
+amount = 30
 spawns = Array[ExtResource("2_dbj24")]([SubResource("Resource_w0j33"), SubResource("Resource_v8fdn"), SubResource("Resource_pgh2o"), SubResource("Resource_6rxg6"), SubResource("Resource_iri3h")])
 next_level = ExtResource("6_3ia1y")
-margin = Vector2(64, 64)
+
+[node name="Instructions" parent="Background" index="2"]
+text = "[center][wave][color=cyan]Blue[/color][/wave] Flees[/center]
+[center][wave][color=red]Red[/color][/wave] Chases[/center]
+[center][wave][color=yellow]Yellow[/color][/wave] Splits[/center]
+"
+
+[node name="RichTextLabel" parent="UI" index="2"]
+text = "Level 2"
+
+[connection signal="enter_level" from="." to="Camera2D" method="enter_level"]
 
 [editable path="Amoeba"]
 [editable path="Amoeba/Hurtbox"]

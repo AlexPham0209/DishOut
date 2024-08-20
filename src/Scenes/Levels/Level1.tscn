@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://8syuojrdilr3"]
+[gd_scene load_steps=9 format=3 uid="uid://8syuojrdilr3"]
 
 [ext_resource type="PackedScene" uid="uid://dvt6tmyt3u46e" path="res://src/Scenes/Levels/Level.tscn" id="1_fn4pg"]
 [ext_resource type="Script" path="res://src/Scripts/LevelGeneration/SpawnData.gd" id="2_wki27"]
@@ -13,39 +13,47 @@ amount = 30
 min_size = 0
 max_size = 1
 
-[sub_resource type="Resource" id="Resource_pi8i7"]
+[sub_resource type="Resource" id="Resource_vi2v1"]
 script = ExtResource("2_wki27")
 type = ExtResource("4_mvqcm")
-amount = 5
+amount = 20
+min_size = 0
+max_size = 0
+
+[sub_resource type="Resource" id="Resource_pi8i7"]
+script = ExtResource("2_wki27")
+type = ExtResource("3_owmdx")
+amount = 10
 min_size = 3
 max_size = 5
 
 [node name="Level1" instance=ExtResource("1_fn4pg")]
 amount = 15
-spawns = Array[ExtResource("2_wki27")]([SubResource("Resource_0lobg"), SubResource("Resource_pi8i7")])
+spawns = Array[ExtResource("2_wki27")]([SubResource("Resource_0lobg"), SubResource("Resource_vi2v1"), SubResource("Resource_pi8i7")])
 next_level = ExtResource("5_vvvou")
 
-[node name="Amoeba" parent="." index="5"]
-position = Vector2(974, 1047)
+[node name="ColorRect" parent="Background" index="0"]
+offset_left = -3182.0
+offset_top = -1047.0
+offset_right = 8008.0
+offset_bottom = 5185.0
 
-[node name="Camera2D" parent="." index="6"]
-position = Vector2(974, 1047)
+[node name="Instructions" parent="Background" index="2"]
+offset_left = 1831.0
+offset_top = 1923.0
+offset_right = 2183.0
+offset_bottom = 2277.0
 
-[node name="Marker2D19" type="Marker2D" parent="SpawnPoints" index="4"]
-position = Vector2(594, 642)
-
-[node name="Marker2D20" type="Marker2D" parent="SpawnPoints" index="6"]
+[node name="Marker2D20" type="Marker2D" parent="SpawnPoints" index="5"]
 position = Vector2(1143, 685)
 
-[node name="Marker2D21" type="Marker2D" parent="SpawnPoints" index="7"]
-position = Vector2(732, 391)
+[node name="Amoeba" parent="." index="5"]
+position = Vector2(1998, 2047)
 
-[node name="Marker2D22" type="Marker2D" parent="SpawnPoints" index="13"]
-position = Vector2(1143, 239)
+[node name="Camera2D" parent="." index="6"]
+position = Vector2(1998, 2047)
 
 [connection signal="enter_level" from="." to="Camera2D" method="enter_level"]
-[connection signal="death" from="Amoeba" to="." method="show_game_over_screen"]
-[connection signal="finish_zoom_out" from="Camera2D" to="Amoeba" method="pause"]
 
 [editable path="Amoeba"]
 [editable path="Amoeba/Hurtbox"]

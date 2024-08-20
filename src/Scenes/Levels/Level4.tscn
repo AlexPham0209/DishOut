@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c8xs2irh3asdx"]
+[gd_scene load_steps=15 format=3 uid="uid://c8xs2irh3asdx"]
 
 [ext_resource type="PackedScene" uid="uid://dvt6tmyt3u46e" path="res://src/Scenes/Levels/Level.tscn" id="1_koo6c"]
 [ext_resource type="Script" path="res://src/Scripts/LevelGeneration/SpawnData.gd" id="2_q63fv"]
@@ -6,12 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://svqfj24tt0ep" path="res://src/Scenes/Enemy/Grower.tscn" id="4_y65ho"]
 [ext_resource type="PackedScene" uid="uid://cho6hfuheh6n0" path="res://src/Scenes/Enemy/Poisoner.tscn" id="5_2mtjl"]
 [ext_resource type="PackedScene" uid="uid://uv30qc2qalff" path="res://src/Scenes/Enemy/Splitter.tscn" id="6_1q7yh"]
-[ext_resource type="Texture2D" uid="uid://c8022nv1f3loo" path="res://icon.png" id="7_s0rqh"]
+[ext_resource type="PackedScene" uid="uid://5iaqrrp5m1ar" path="res://src/Scenes/Enemy/Chaser.tscn" id="7_wc8dw"]
 
 [sub_resource type="Resource" id="Resource_vr333"]
 script = ExtResource("2_q63fv")
 type = ExtResource("3_bgr6f")
-amount = 10
+amount = 15
 min_size = 0
 max_size = 3
 
@@ -32,29 +32,56 @@ max_size = 10
 [sub_resource type="Resource" id="Resource_fyjwy"]
 script = ExtResource("2_q63fv")
 type = ExtResource("5_2mtjl")
-amount = 10
-min_size = 0
-max_size = 2
+amount = 5
+min_size = 10
+max_size = 20
 
 [sub_resource type="Resource" id="Resource_0wnbe"]
 script = ExtResource("2_q63fv")
 type = ExtResource("6_1q7yh")
 amount = 4
 min_size = 0
-max_size = 2
+max_size = 15
+
+[sub_resource type="Resource" id="Resource_yjwfh"]
+script = ExtResource("2_q63fv")
+type = ExtResource("7_wc8dw")
+amount = 5
+min_size = 20
+max_size = 30
+
+[sub_resource type="Resource" id="Resource_tdbqm"]
+script = ExtResource("2_q63fv")
+type = ExtResource("3_bgr6f")
+amount = 20
+min_size = 0
+max_size = 1
 
 [node name="Level4" instance=ExtResource("1_koo6c")]
-amount = 50
-spawns = Array[ExtResource("2_q63fv")]([SubResource("Resource_vr333"), SubResource("Resource_ap0ei"), SubResource("Resource_xacuq"), SubResource("Resource_fyjwy"), SubResource("Resource_0wnbe")])
-margin = Vector2(128, 128)
+amount = 30
+spawns = Array[ExtResource("2_q63fv")]([SubResource("Resource_vr333"), SubResource("Resource_ap0ei"), SubResource("Resource_xacuq"), SubResource("Resource_fyjwy"), SubResource("Resource_0wnbe"), SubResource("Resource_yjwfh"), SubResource("Resource_tdbqm")])
+
+[node name="Instructions" parent="Background" index="2"]
+text = "[center][wave][color=cyan]Blue[/color][/wave] Flees[/center]
+[center][wave][color=red]Red[/color][/wave] Chases[/center]
+[center][wave][color=yellow]Yellow[/color][/wave] Splits[/center]
+[center][wave][color=green]Green[/color][/wave] Grows[/center]
+[center][wave][color=purple]Purple[/color][/wave] Poisons[/center]
+"
+
+[node name="CollisionPolygon2D" parent="Border" index="0"]
+position = Vector2(51, 0)
+
+[node name="Growth" parent="Amoeba" index="3"]
+value = 3
+
+[node name="RichTextLabel" parent="UI" index="2"]
+text = "Level 4"
 
 [node name="Poisoner" parent="." index="8" instance=ExtResource("5_2mtjl")]
 position = Vector2(1126, 541)
 
-[node name="Icon" parent="Poisoner" index="0"]
-position = Vector2(0, 1.43051e-06)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_s0rqh")
+[connection signal="enter_level" from="." to="Camera2D" method="enter_level"]
 
 [editable path="Amoeba"]
 [editable path="Amoeba/Hurtbox"]

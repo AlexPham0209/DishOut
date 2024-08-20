@@ -3,7 +3,7 @@ extends Node2D
 @export var amount : int
 var amount_left : int :
 	set(value):
-		amount_left = value
+		amount_left = max(0, value)
 		set_amount_left(value)
 	get:
 		return amount_left
@@ -17,6 +17,9 @@ var amount_left : int :
 @onready var spawn_points = $SpawnPoints
 @onready var top_left : Marker2D = $Limits/TopLeft
 @onready var bottom_right : Marker2D = $Limits/BottomRight
+@onready var animation_player = $AnimationPlayer
+@onready var player = $Amoeba
+@onready var text = $UI/Control/GrowthText
 var next_level_screen = preload("res://src/Scenes/NextLevelScreen.tscn") 
 var game_over_screen = preload("res://src/Scenes/GameOverScreen.tscn") 
 
@@ -28,6 +31,7 @@ func _ready() -> void:
 	Global.grow.connect(subtract_growth)
 	amount_left = amount
 	enter_level.emit()
+	text.set_growth(player.growth.value)
 	spawn_enemies()
 
 func spawn_enemies():
@@ -69,3 +73,6 @@ func show_next_level_screen():
 func show_game_over_screen():
 	var instance = game_over_screen.instantiate()
 	get_tree().current_scene.add_child(instance)
+
+func show_stats():
+	animation_player.play("Start")

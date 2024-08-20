@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbott3kevwkn1"]
+
+[ext_resource type="Script" path="res://src/Scripts/TitleScreen.gd" id="1_6f5vm"]
+
+[node name="TitleScreen" type="CanvasLayer"]
+script = ExtResource("1_6f5vm")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 362.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+offset_left = 235.0
+offset_top = 240.0
+offset_right = 438.0
+offset_bottom = 362.0
+focus_mode = 1
+
+[node name="Start" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="Quit" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Quit
+"
+
+[connection signal="pressed" from="Control/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

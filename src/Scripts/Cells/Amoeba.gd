@@ -24,11 +24,14 @@ var dashing : bool = false
 
 signal notify_cells
 signal death
+signal dash_event
 
 var scale_tween : Tween
 var rotate_tween : Tween
 
 var blood : PackedScene = preload("res://src/Scenes/Trail/Blood.tscn")
+var first_dash : bool = true
+
 
 func _ready() -> void:
 	start_speed = speed 
@@ -43,6 +46,9 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Interact"):
+		if first_dash:
+			dash_event.emit()
+			first_dash = true
 		ability.execute()
 		
 	self.move()
@@ -82,6 +88,7 @@ func damage():
 	animation_player.play("TakeDamage")
 	
 func heal():
+	print("heal")
 	grow(1)
 		
 func grow(amount):
@@ -118,8 +125,7 @@ func spawn_blood():
 		
 	var instance = blood.instantiate()
 	instance.global_position = self.global_position
-	get_tree().current_scene.add_child(instance)
-	get_tree().current_scene.move_child(instance, 0)
+	get_tree().current_scene.get_node("Blood").add_child(instance)
 
 func game_over():
 	spawn_blood()

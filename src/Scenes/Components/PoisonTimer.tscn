@@ -5,6 +5,6 @@
 [node name="PoisonTimer" type="Timer"]
 autostart = true
 script = ExtResource("1_sin0e")
-ticks = 5
+ticks = 2
 
 [connection signal="timeout" from="." to="." method="_on_timeout"]

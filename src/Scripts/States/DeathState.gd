@@ -13,6 +13,5 @@ func enter(param : Dictionary = {}):
 	instance.global_position = owner.global_position 
 	
 	if get_tree() != null and get_tree().current_scene != null:
-		get_tree().current_scene.add_child(instance)
-		get_tree().current_scene.move_child(instance, 0)
+		get_tree().current_scene.get_node("Blood").add_child(instance)
 	entity.queue_free()
