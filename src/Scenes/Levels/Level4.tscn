@@ -72,16 +72,11 @@ text = "[center][wave][color=cyan]Blue[/color][/wave] Flees[/center]
 [node name="CollisionPolygon2D" parent="Border" index="0"]
 position = Vector2(51, 0)
 
-[node name="Growth" parent="Amoeba" index="3"]
-value = 3
-
 [node name="RichTextLabel" parent="UI" index="2"]
 text = "Level 4"
 
 [node name="Poisoner" parent="." index="8" instance=ExtResource("5_2mtjl")]
 position = Vector2(1126, 541)
-
-[connection signal="enter_level" from="." to="Camera2D" method="enter_level"]
 
 [editable path="Amoeba"]
 [editable path="Amoeba/Hurtbox"]

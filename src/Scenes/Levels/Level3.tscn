@@ -64,8 +64,6 @@ text = "[center][wave][color=cyan]Blue[/color][/wave] Flees[/center]
 [node name="RichTextLabel" parent="UI" index="2"]
 text = "Level 3"
 
-[connection signal="enter_level" from="." to="Camera2D" method="enter_level"]
-
 [editable path="Amoeba"]
 [editable path="Amoeba/Hurtbox"]
 [editable path="Amoeba/Abilities/BoostAbility"]

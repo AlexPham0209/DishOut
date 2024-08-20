@@ -38,7 +38,7 @@ func _ready() -> void:
 	start_scale = scale 
 	start_zoom = camera.zoom
 	self.scale = start_scale + (Vector2(scale_growth_rate, scale_growth_rate) * growth.value)
-	camera.zoom = start_zoom - (Vector2(cam_growth_rate, cam_growth_rate) * growth.value)
+	camera.starting_scale = start_zoom - (Vector2(cam_growth_rate, cam_growth_rate) * growth.value)
 	Global.grow.emit(growth.value)
 	Global.player = self
 	ability.entity = self
@@ -88,13 +88,13 @@ func damage():
 	animation_player.play("TakeDamage")
 	
 func heal():
-	print("heal")
 	grow(1)
 		
 func grow(amount):
 	#Once reached max growth, then go to the next level
 	growth.value += amount
-	camera.screen_shake()
+	if not camera.zooming:
+		camera.screen_shake()
 	
 	if growth.value <= 0:
 		game_over()
@@ -114,7 +114,7 @@ func grow(amount):
 	scale_tween.parallel().tween_property(self, "scale", new_scale, 1.0). \
 		set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 		
-	if not camera.animation_player.is_playing():
+	if not camera.zooming:
 		scale_tween.parallel().tween_property(camera, "zoom", new_zoom.clamp(Vector2(0.25, 0.25), Vector2.ONE), 1.0). \
 			set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	scale_tween.play()

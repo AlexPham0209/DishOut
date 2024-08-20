@@ -28,15 +28,16 @@ min_size = 3
 max_size = 5
 
 [node name="Level1" instance=ExtResource("1_fn4pg")]
-amount = 15
+amount = 1
 spawns = Array[ExtResource("2_wki27")]([SubResource("Resource_0lobg"), SubResource("Resource_vi2v1"), SubResource("Resource_pi8i7")])
 next_level = ExtResource("5_vvvou")
 
 [node name="ColorRect" parent="Background" index="0"]
-offset_left = -3182.0
-offset_top = -1047.0
-offset_right = 8008.0
-offset_bottom = 5185.0
+offset_left = -3524.0
+offset_top = -2457.0
+offset_right = 9251.0
+offset_bottom = 5515.0
+scale = Vector2(0.902957, 1.11702)
 
 [node name="Instructions" parent="Background" index="2"]
 offset_left = 1831.0

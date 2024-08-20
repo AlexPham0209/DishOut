@@ -1,11 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://c4hc5tt817e3y"]
+[gd_scene load_steps=24 format=3 uid="uid://c4hc5tt817e3y"]
 
 [ext_resource type="Script" path="res://src/Scripts/Cutscene.gd" id="1_xua8u"]
+[ext_resource type="PackedScene" uid="uid://8syuojrdilr3" path="res://src/Scenes/Levels/Level1.tscn" id="2_822sf"]
 [ext_resource type="Script" path="res://src/Scripts/Dialogue.gd" id="2_wchmf"]
 [ext_resource type="PackedScene" uid="uid://chqewscxs0qop" path="res://src/Scenes/Cutscenes/Textbox.tscn" id="3_gq7ik"]
 [ext_resource type="Texture2D" uid="uid://csqslyic5civv" path="res://src/Assets/Art/Cells/Lil_Guy.png" id="4_5veyb"]
 [ext_resource type="Texture2D" uid="uid://q5qbkae260ob" path="res://src/Assets/Art/Petridish/PetriDish.png" id="4_uqrd0"]
 [ext_resource type="Texture2D" uid="uid://c85fjpp0j0blt" path="res://src/Assets/Art/Petridish/Petri_Cutscene_BG.png" id="5_ihe31"]
+[ext_resource type="Texture2D" uid="uid://db3qyik4txoa2" path="res://src/Assets/Art/Petra/Merge_4.png" id="6_dc8j7"]
 [ext_resource type="Texture2D" uid="uid://cq8m4bopg5wq8" path="res://src/Assets/Art/Petra/En_Cut_Normal.png" id="6_gms34"]
 
 [sub_resource type="Animation" id="Animation_cgeng"]
@@ -90,6 +92,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Backgrounds/Fade:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_7oby3"]
@@ -240,7 +254,7 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(6.96667),
+"times": PackedFloat32Array(7),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -250,6 +264,74 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_ju1v3"]
 resource_name = "1_6"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Characters/Merge4:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Characters/EnCutNormal:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Characters/LilGuy:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Dialogue/TextBox")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["“That was bizarre… but it gives me an idea. Maybe if I eat enough other amoebas, I can become large enough to scale the petri dish walls, and escape this dish once and for all!”", true],
+"method": &"set_text"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_q1tg2"]
+resource_name = "1_7"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"change_scene"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_c2wcr"]
 resource_name = "Explaining"
@@ -455,6 +537,30 @@ tracks/8/keys = {
 "update": 0,
 "values": [Vector2(1073, 209)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Characters/Merge4:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Characters/EnCutNormal:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_6aici"]
 resource_name = "Start"
@@ -508,6 +614,7 @@ _data = {
 "1_4": SubResource("Animation_nubld"),
 "1_5": SubResource("Animation_scpbl"),
 "1_6": SubResource("Animation_ju1v3"),
+"1_7": SubResource("Animation_q1tg2"),
 "Explaining": SubResource("Animation_c2wcr"),
 "Exposition": SubResource("Animation_rwo05"),
 "Jump": SubResource("Animation_xok7p"),
@@ -518,7 +625,8 @@ _data = {
 
 [node name="Scene1" type="Node2D"]
 script = ExtResource("1_xua8u")
-events = Array[String](["1_1", "1_2", "1_3", "1_4", "1_5"])
+events = Array[String](["1_1", "1_2", "1_3", "1_4", "1_5", "1_6", "1_7"])
+next_scene = ExtResource("2_822sf")
 
 [node name="Backgrounds" type="Node2D" parent="."]
 
@@ -550,6 +658,12 @@ position = Vector2(-288, 189)
 scale = Vector2(0.882353, 0.821663)
 texture = ExtResource("6_gms34")
 
+[node name="Merge4" type="Sprite2D" parent="Characters"]
+visible = false
+position = Vector2(324, 146)
+scale = Vector2(0.736014, 0.779438)
+texture = ExtResource("6_dc8j7")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Dialogue" type="Control" parent="CanvasLayer"]
@@ -574,6 +688,7 @@ autowrap_mode = 3
 libraries = {
 "": SubResource("AnimationLibrary_c85hf")
 }
+next/1_1 = &"1_1"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(320, 180)

@@ -22,6 +22,8 @@ var amount_left : int :
 @onready var text = $UI/Control/GrowthText
 var next_level_screen = preload("res://src/Scenes/NextLevelScreen.tscn") 
 var game_over_screen = preload("res://src/Scenes/GameOverScreen.tscn") 
+var game_over_instance
+var next_level_instance
 
 signal update_amount_left(value)
 signal enter_level
@@ -66,13 +68,17 @@ func finish_level():
 		leave_level.emit()
 
 func show_next_level_screen():
-	var instance = next_level_screen.instantiate()
-	instance.level = next_level
-	get_tree().current_scene.add_child(instance)
+	if next_level_instance:
+		return
+	next_level_instance = next_level_screen.instantiate()
+	next_level_instance.level = next_level
+	get_tree().current_scene.add_child(next_level_instance)
 
 func show_game_over_screen():
-	var instance = game_over_screen.instantiate()
-	get_tree().current_scene.add_child(instance)
+	if game_over_instance:
+		return
+	game_over_instance = game_over_screen.instantiate()
+	get_tree().current_scene.add_child(game_over_instance)
 
 func show_stats():
 	animation_player.play("Start")
